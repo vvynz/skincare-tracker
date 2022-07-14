@@ -1,8 +1,9 @@
+import productForm from "./Components/productForm";
 
 function App() {
   return (
     <div className="App">
-      <h1>HELLO WORLD</h1>
+      <productForm />
     </div>
   );
 }

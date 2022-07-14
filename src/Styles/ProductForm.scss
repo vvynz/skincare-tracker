@@ -1,0 +1,28 @@
+.form-container {
+  // border: 1px solid black;
+  // margin: auto 0;
+  display: flex;
+  justify-content: center;
+}
+
+.product-form {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  padding: 20px;
+  justify-content: space-between;
+}
+
+.product-form label,
+input {
+  margin-bottom: 10px;
+}
+
+.add-product-btn {
+  margin-top: 10px;
+  background-color: plum;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 5px;
+}

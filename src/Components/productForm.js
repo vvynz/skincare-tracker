@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 
+import "../Styles/ProductForm.scss";
+
 export default function ProductForm() {
   return (
     <div className="form-container">
       <form className="product-form">
+        <label>Product:</label>
         <input
           className="form-field"
           placeholder="Product name"

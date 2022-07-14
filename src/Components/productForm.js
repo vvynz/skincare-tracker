@@ -1,5 +1,5 @@
 import React, { useState } from "react";
 
-export default function productForm() {
+export default function ProductForm() {
   return ("I am a form");
 }

@@ -1,9 +1,9 @@
-import productForm from "./Components/productForm";
+import ProductForm from "./Components/ProductForm";
 
 function App() {
   return (
     <div className="App">
-      <productForm />
+      <ProductForm />
     </div>
   );
 }

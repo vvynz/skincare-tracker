@@ -4,8 +4,11 @@ import { useForm } from "react-hook-form";
 import "../Styles/ProductForm.scss";
 
 export default function ProductForm() {
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => { console.log(data) };
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const onSubmit = (data) => {
+    console.log(data)
+    console.log(errors)
+  };
 
   return (
     <div className="form-container">

@@ -1,9 +1,13 @@
 import React, { useState } from "react";
+import { useColorMode } from "@chakra-ui/react";
 
 export default function NavBar() {
+  const { colorMode, toggleColorMode } = useColorMode();
   return (
     <header>
-      <h1>NAV</h1>
+      <button onClick={toggleColorMode}>
+        Toggle {colorMode === "light" ? "dark" : "light"}
+      </button>
     </header>
   )
 }

@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
+import {
+  FormControl,
+  FormLabel,
+  FormHelperText,
+  Input,
+  Button
+} from "@chakra-ui/react";
+
 import "../Styles/ProductForm.scss";
 
 export default function ProductForm() {

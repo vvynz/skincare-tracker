@@ -19,37 +19,47 @@ export default function ProductForm() {
     dateOpened: "",
     expiryDate: "",
   });
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  const onSubmit = (data) => {
-    // alert(JSON.stringify(data))
-    console.log(data);
-    console.log(errors)
-  };
+  const [sumbitted, setSubmitted] = useState(false);
+  // const { register, handleSubmit, formState: { errors } } = useForm();
+  // const onSubmit = (data) => {
+  // alert(JSON.stringify(data))
+  // console.log(data);
+  // console.log(errors)
+  // };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+    alert("SUBMISSION SUCCESS");
+  }
 
   return (
     <div className="form-container">
-      <FormControl className="product-form">
-        <FormLabel>Product:</FormLabel>
-        <Input
-          className="form-field"
-          value={products.productName}
-          onChange={(e) => setProducts({ ...products, productName: e.target.value })}
-          placeholder="Product name"
-          name="productName" />
-        <FormLabel>Date opened:</FormLabel>
-        <Input
-          value={products.dateOpened.toLocaleDateString}
-          onInput={(e) => setProducts({ ...products, dateOpened: e.target.value })}
-          type="date"
-          name="dateOpened" />
-        <FormLabel>Expiry date:</FormLabel>
-        <Input
-          value={products.expiryDate.toLocaleDateString}
-          onInput={(e) => setProducts({ ...products, expiryDate: e.target.value })}
-          type="date"
-          name="expiryDate" />
-        <Button className="add-product-btn">Add</Button>
-      </FormControl>
+      <form onSubmit={handleSubmit}>
+        <FormControl className="product-form">
+          {sumbitted ? <p>Sucess! Product has been added!</p> : null}
+          <FormLabel>Product:</FormLabel>
+          <Input
+            className="form-field"
+            value={products.productName}
+            onChange={(e) => setProducts({ ...products, productName: e.target.value })}
+            placeholder="Product name"
+            name="productName" />
+          <FormLabel>Date opened:</FormLabel>
+          <Input
+            value={products.dateOpened.toLocaleDateString}
+            onInput={(e) => setProducts({ ...products, dateOpened: e.target.value })}
+            type="date"
+            name="dateOpened" />
+          <FormLabel>Expiry date:</FormLabel>
+          <Input
+            value={products.expiryDate.toLocaleDateString}
+            onInput={(e) => setProducts({ ...products, expiryDate: e.target.value })}
+            type="date"
+            name="expiryDate" />
+          <Button type="submit" className="add-product-btn">Add</Button>
+        </FormControl>
+      </form>
 
       {/* <form onSubmit={handleSubmit(onSubmit)}>
         <FormControl className="product-form">

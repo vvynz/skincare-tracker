@@ -31,9 +31,8 @@ export default function ProductForm() {
   }
 
   const handleDateOpenedChange = (e) => {
-    setProducts({ ...products, dateOpened: e.target });
-    console.log(e);
-    console.log(e.target.value);
+    setProducts({ ...products, dateOpened: e.target.value });
+    console.log(e.target.value)
   }
 
 
@@ -48,14 +47,15 @@ export default function ProductForm() {
           placeholder="Product name"
           name="productName" />
         <FormLabel>Date opened:</FormLabel>
-        <input
+        <Input
           value={products.dateOpened.toLocaleDateString}
           onInput={handleDateOpenedChange}
           type="date"
           name="dateOpened" />
         <FormLabel>Expiry date:</FormLabel>
-        <input
-          value={products.expiryDate}
+        <Input
+          value={products.expiryDate.toLocaleDateString}
+          onInput={(e) => setProducts({ ...products, expiryDate: e.target.value })}
           type="date"
           name="expiryDate" />
         <Button className="add-product-btn">Add</Button>

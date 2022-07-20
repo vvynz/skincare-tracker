@@ -30,7 +30,13 @@ export default function ProductForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitted(true);
-    alert("SUBMISSION SUCCESS");
+
+    // productName clears but other fields don't 
+    setProducts({
+      productName: "",
+      dateOpened: "",
+      expiryDate: "",
+    });
   }
 
   return (

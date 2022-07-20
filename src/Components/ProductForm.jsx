@@ -12,9 +12,12 @@ import {
 import "../Styles/ProductForm.scss";
 
 export default function ProductForm() {
+  const [products, setProducts] = useState(null);
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = (data) => {
-    alert(JSON.stringify(data))
+    // alert(JSON.stringify(data))
+    console.log(data);
+    setProducts(data);
     console.log(errors)
   };
 

@@ -19,26 +19,25 @@ export default function ProductForm() {
   const onSubmit = (data) => {
     // alert(JSON.stringify(data))
     console.log(data);
-    setProducts(data);
     console.log(errors)
   };
 
   return (
     <div className="form-container">
-      {/* <form className="product-form">
-        <label>Product:</label>
-        <input
+      <FormControl className="product-form">
+        <FormLabel>Product:</FormLabel>
+        <Input
           className="form-field"
           placeholder="Product name"
           name="productName" />
-        <label>Date opened:</label>
-        <input type="date" />
-        <label>Expiry date:</label>
-        <input type="date" />
-        <button className="add-product-btn">Add</button>
-      </form> */}
+        <FormLabel>Date opened:</FormLabel>
+        <Input type="date" />
+        <FormLabel>Expiry date:</FormLabel>
+        <Input type="date" />
+        <Button className="add-product-btn">Add</Button>
+      </FormControl>
 
-      <form onSubmit={handleSubmit(onSubmit)}>
+      {/* <form onSubmit={handleSubmit(onSubmit)}>
         <FormControl className="product-form">
           <FormLabel>Product:</FormLabel>
           <Input
@@ -60,7 +59,7 @@ export default function ProductForm() {
             {...register("Expiry date", {})} />
           <Button type="submit" className="add-product-btn">Add</Button>
         </FormControl>
-      </form>
+      </form> */}
       <InUse products={products} />
     </div>
   );

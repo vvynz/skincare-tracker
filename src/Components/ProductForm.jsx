@@ -8,7 +8,9 @@ import {
   FormLabel,
   FormHelperText,
   Input,
-  Button
+  Button,
+  Alert,
+  AlertIcon
 } from "@chakra-ui/react";
 
 import "../Styles/ProductForm.scss";
@@ -43,7 +45,14 @@ export default function ProductForm() {
     <div className="form-container">
       <form onSubmit={handleSubmit}>
         <FormControl className="product-form">
-          {sumbitted ? <p>Sucess! Product has been added!</p> : null}
+
+          {sumbitted ?
+            <Alert status="success">
+              <AlertIcon />
+              Sucess! Product has been added!
+            </Alert>
+            : null}
+
           <FormLabel>Product:</FormLabel>
           <Input
             className="form-field"

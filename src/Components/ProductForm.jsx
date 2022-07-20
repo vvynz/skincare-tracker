@@ -60,18 +60,21 @@ export default function ProductForm() {
             onChange={(e) => setProducts({ ...products, productName: e.target.value })}
             placeholder="Product name"
             name="productName" />
+          <small className="err-message">Please enter a product</small>
           <FormLabel>Date opened:</FormLabel>
           <Input
             value={products.dateOpened.toLocaleDateString}
             onInput={(e) => setProducts({ ...products, dateOpened: e.target.value })}
             type="date"
             name="dateOpened" />
+          <small className="err-message">Please enter a date</small>
           <FormLabel>Expiry date:</FormLabel>
           <Input
             value={products.expiryDate.toLocaleDateString}
             onInput={(e) => setProducts({ ...products, expiryDate: e.target.value })}
             type="date"
             name="expiryDate" />
+          <small className="err-message">Please enter a date</small>
           <Button type="submit" className="add-product-btn">Add</Button>
         </FormControl>
       </form>

@@ -26,6 +26,10 @@ export default function ProductForm() {
     console.log(errors)
   };
 
+  const handleProductNameChange = (e) => {
+    setProducts({ ...products, productName: e.target.value });
+  }
+
 
   return (
     <div className="form-container">
@@ -33,14 +37,18 @@ export default function ProductForm() {
         <FormLabel>Product:</FormLabel>
         <Input
           className="form-field"
+          value={products.productName}
+          onChange={handleProductNameChange}
           placeholder="Product name"
           name="productName" />
         <FormLabel>Date opened:</FormLabel>
         <Input
+          value={products.dateOpened}
           type="date"
           name="dateOpened" />
         <FormLabel>Expiry date:</FormLabel>
         <Input
+          value={products.expiryDate}
           type="date"
           name="expiryDate" />
         <Button className="add-product-btn">Add</Button>

@@ -1,8 +1,9 @@
 import React from "react";
 
 export default function InUse(props) {
-  const products = props.products;
+  const data = props.products;
   return (
-    <p>HELLO</p>
+    <section>
+    </section>
   )
 }

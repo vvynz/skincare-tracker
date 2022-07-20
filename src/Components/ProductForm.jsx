@@ -14,13 +14,18 @@ import {
 import "../Styles/ProductForm.scss";
 
 export default function ProductForm() {
-  const [products, setProducts] = useState(null);
+  const [products, setProducts] = useState({
+    productName: "",
+    dateOpened: "",
+    expiryDate: "",
+  });
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = (data) => {
     // alert(JSON.stringify(data))
     console.log(data);
     console.log(errors)
   };
+
 
   return (
     <div className="form-container">
@@ -31,9 +36,13 @@ export default function ProductForm() {
           placeholder="Product name"
           name="productName" />
         <FormLabel>Date opened:</FormLabel>
-        <Input type="date" />
+        <Input
+          type="date"
+          name="dateOpened" />
         <FormLabel>Expiry date:</FormLabel>
-        <Input type="date" />
+        <Input
+          type="date"
+          name="expiryDate" />
         <Button className="add-product-btn">Add</Button>
       </FormControl>
 

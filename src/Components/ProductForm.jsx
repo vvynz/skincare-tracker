@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
+import InUse from "./InUse";
+
 import {
   FormControl,
   FormLabel,
@@ -59,6 +61,7 @@ export default function ProductForm() {
           <Button type="submit" className="add-product-btn">Add</Button>
         </FormControl>
       </form>
+      <InUse products={products} />
     </div>
   );
 }

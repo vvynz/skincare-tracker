@@ -1,7 +1,8 @@
 import React from "react";
 
 export default function InUse(props) {
+  const products = props.products;
   return (
-    <h1>HELLO</h1>
+    <p>HELLO</p>
   )
 }

@@ -22,6 +22,7 @@ export default function ProductForm() {
     expiryDate: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [valid, setValid] = useState(false);
   // const { register, handleSubmit, formState: { errors } } = useForm();
   // const onSubmit = (data) => {
   // alert(JSON.stringify(data))
@@ -32,13 +33,16 @@ export default function ProductForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitted(true);
+    if (products.productName && products.dateOpened && products.expiryDate) {
+      setValid(true);
+    }
 
     // productName clears but other fields don't 
-    setProducts({
-      productName: "",
-      dateOpened: "",
-      expiryDate: "",
-    });
+    // setProducts({
+    //   productName: "",
+    //   dateOpened: "",
+    //   expiryDate: "",
+    // });
   }
 
   return (
@@ -46,7 +50,7 @@ export default function ProductForm() {
       <form onSubmit={handleSubmit}>
         <FormControl className="product-form">
 
-          {submitted ?
+          {submitted && valid ?
             <Alert status="success">
               <AlertIcon />
               Sucess! Product has been added!

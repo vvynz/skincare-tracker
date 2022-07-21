@@ -21,7 +21,7 @@ export default function ProductForm() {
     dateOpened: "",
     expiryDate: "",
   });
-  const [sumbitted, setSubmitted] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   // const { register, handleSubmit, formState: { errors } } = useForm();
   // const onSubmit = (data) => {
   // alert(JSON.stringify(data))
@@ -46,7 +46,7 @@ export default function ProductForm() {
       <form onSubmit={handleSubmit}>
         <FormControl className="product-form">
 
-          {sumbitted ?
+          {submitted ?
             <Alert status="success">
               <AlertIcon />
               Sucess! Product has been added!
@@ -60,21 +60,21 @@ export default function ProductForm() {
             onChange={(e) => setProducts({ ...products, productName: e.target.value })}
             placeholder="Product name"
             name="productName" />
-          <small className="err-message">Please enter a product</small>
+          {submitted && !products.productName ? <small className="err-message">Please enter a product</small> : null}
           <FormLabel>Date opened:</FormLabel>
           <Input
             value={products.dateOpened.toLocaleDateString}
             onInput={(e) => setProducts({ ...products, dateOpened: e.target.value })}
             type="date"
             name="dateOpened" />
-          <small className="err-message">Please enter a date</small>
+          {submitted && !products.dateOpened ? <small className="err-message">Please enter a date</small> : null}
           <FormLabel>Expiry date:</FormLabel>
           <Input
             value={products.expiryDate.toLocaleDateString}
             onInput={(e) => setProducts({ ...products, expiryDate: e.target.value })}
             type="date"
             name="expiryDate" />
-          <small className="err-message">Please enter a date</small>
+          {submitted && !products.expiryDate ? <small className="err-message">Please enter a date</small> : null}
           <Button type="submit" className="add-product-btn">Add</Button>
         </FormControl>
       </form>

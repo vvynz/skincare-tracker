@@ -15,7 +15,7 @@ export default function InUse(props) {
   const data = props.products;
   console.log(data)
   return (
-    <section>
+    <div>
       <TableContainer>
         <Table>
           <TableCaption>Current Products In Use:</TableCaption>
@@ -35,6 +35,6 @@ export default function InUse(props) {
           </Tbody>
         </Table>
       </TableContainer>
-    </section>
+    </div>
   )
 }

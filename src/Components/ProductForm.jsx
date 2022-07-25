@@ -43,7 +43,19 @@ export default function ProductForm() {
     //   dateOpened: "",
     //   expiryDate: "",
     // });
+    
+    // clearForm();
   }
+
+  // const clearForm = () => {
+  //   setSubmitted(false);
+  //   setValid(false);
+  //   setProducts({
+  //     productName: "",
+  //     dateOpened: "",
+  //     expiryDate: ""
+  //   })
+  // }
 
   return (
     <div className="form-container">

@@ -17,7 +17,7 @@ import "../Styles/ProductForm.scss";
 
 export default function ProductForm() {
   const [items, setitems] = useState({
-    productName: "",
+    itemName: "",
     dateOpened: "",
     expiryDate: "",
   });
@@ -33,9 +33,9 @@ export default function ProductForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // productName clears but other fields don't 
+    // itemName clears but other fields don't 
     // setitems({
-    //   productName: "",
+    //   itemName: "",
     //   dateOpened: "",
     //   expiryDate: "",
     // });
@@ -46,12 +46,12 @@ export default function ProductForm() {
 
   const save = () => {
     setSubmitted(true);
-    if (items.productName && items.dateOpened && items.expiryDate) {
+    if (items.itemName && items.dateOpened && items.expiryDate) {
       setValid(true);
     }
 
     setitems({
-      productName: items.productName,
+      itemName: items.itemName,
       dateOpened: items.dateOpened,
       expiryDate: items.expiryDate
     })
@@ -61,7 +61,7 @@ export default function ProductForm() {
   //   setSubmitted(false);
   //   setValid(false);
   //   setitems({
-  //     productName: "",
+  //     itemName: "",
   //     dateOpened: "",
   //     expiryDate: ""
   //   })
@@ -82,11 +82,11 @@ export default function ProductForm() {
           <FormLabel>Product:</FormLabel>
           <Input
             className="form-field"
-            value={items.productName}
-            onChange={(e) => setitems({ ...items, productName: e.target.value })}
+            value={items.itemName}
+            onChange={(e) => setitems({ ...items, itemName: e.target.value })}
             placeholder="Product name"
-            name="productName" />
-          {submitted && !items.productName ? <small className="err-message">Please enter a product</small> : null}
+            name="itemName" />
+          {submitted && !items.itemName ? <small className="err-message">Please enter a product</small> : null}
           <FormLabel>Date opened:</FormLabel>
           <Input
             value={items.dateOpened.toLocaleDateString}

@@ -12,8 +12,8 @@ import {
 } from "@chakra-ui/react";
 
 export default function InUse(props) {
-  const data = props.products;
-  console.log(data)
+  const data = props.items;
+  // console.log(data)
   return (
     <div>
       <TableContainer>

@@ -16,7 +16,7 @@ import {
 import "../Styles/ProductForm.scss";
 
 export default function ProductForm() {
-  const [products, setProducts] = useState({
+  const [items, setitems] = useState({
     productName: "",
     dateOpened: "",
     expiryDate: "",
@@ -32,25 +32,35 @@ export default function ProductForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    if (products.productName && products.dateOpened && products.expiryDate) {
-      setValid(true);
-    }
 
     // productName clears but other fields don't 
-    // setProducts({
+    // setitems({
     //   productName: "",
     //   dateOpened: "",
     //   expiryDate: "",
     // });
-    
+
     // clearForm();
+    // save();
+  }
+
+  const save = () => {
+    setSubmitted(true);
+    if (items.productName && items.dateOpened && items.expiryDate) {
+      setValid(true);
+    }
+
+    setitems({
+      productName: items.productName,
+      dateOpened: items.dateOpened,
+      expiryDate: items.expiryDate
+    })
   }
 
   // const clearForm = () => {
   //   setSubmitted(false);
   //   setValid(false);
-  //   setProducts({
+  //   setitems({
   //     productName: "",
   //     dateOpened: "",
   //     expiryDate: ""
@@ -72,25 +82,25 @@ export default function ProductForm() {
           <FormLabel>Product:</FormLabel>
           <Input
             className="form-field"
-            value={products.productName}
-            onChange={(e) => setProducts({ ...products, productName: e.target.value })}
+            value={items.productName}
+            onChange={(e) => setitems({ ...items, productName: e.target.value })}
             placeholder="Product name"
             name="productName" />
-          {submitted && !products.productName ? <small className="err-message">Please enter a product</small> : null}
+          {submitted && !items.productName ? <small className="err-message">Please enter a product</small> : null}
           <FormLabel>Date opened:</FormLabel>
           <Input
-            value={products.dateOpened.toLocaleDateString}
-            onInput={(e) => setProducts({ ...products, dateOpened: e.target.value })}
+            value={items.dateOpened.toLocaleDateString}
+            onInput={(e) => setitems({ ...items, dateOpened: e.target.value })}
             type="date"
             name="dateOpened" />
-          {submitted && !products.dateOpened ? <small className="err-message">Please enter a date</small> : null}
+          {submitted && !items.dateOpened ? <small className="err-message">Please enter a date</small> : null}
           <FormLabel>Expiry date:</FormLabel>
           <Input
-            value={products.expiryDate.toLocaleDateString}
-            onInput={(e) => setProducts({ ...products, expiryDate: e.target.value })}
+            value={items.expiryDate.toLocaleDateString}
+            onInput={(e) => setitems({ ...items, expiryDate: e.target.value })}
             type="date"
             name="expiryDate" />
-          {submitted && !products.expiryDate ? <small className="err-message">Please enter a date</small> : null}
+          {submitted && !items.expiryDate ? <small className="err-message">Please enter a date</small> : null}
           <Button type="submit" className="add-product-btn">Add</Button>
         </FormControl>
       </form>
@@ -118,7 +128,7 @@ export default function ProductForm() {
           <Button type="submit" className="add-product-btn">Add</Button>
         </FormControl>
       </form> */}
-      <InUse products={products} />
+      <InUse items={items} />
     </div>
   );
 }

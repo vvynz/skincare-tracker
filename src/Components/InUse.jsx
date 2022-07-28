@@ -28,7 +28,7 @@ export default function InUse(props) {
           </Thead>
           <Tbody>
             <Tr>
-              <Th>{data.productName}</Th>
+              <Th>{data.itemName}</Th>
               <Th>{data.dateOpened}</Th>
               <Th>{data.expiryDate}</Th>
             </Tr>

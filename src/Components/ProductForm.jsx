@@ -44,7 +44,9 @@ export default function ProductForm() {
     // alert(`Form submitted! ${itemName} ${dateOpened} ${expiryDate}`)
     if (items.itemName && items.dateOpened && items.expiryDate) {
       setValid(true);
-      alert(`${items.itemName} ${items.dateOpened} ${items.expiryDate}`)
+      
+      // stringify the form values & save to localstorage
+      localStorage.setItem("items", JSON.stringify(items));
     }
 
     // clearForm();

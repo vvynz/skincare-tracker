@@ -15,12 +15,16 @@ import {
 
 import "../Styles/ProductForm.scss";
 
+
 export default function ProductForm() {
-  const [items, setitems] = useState({
-    itemName: "",
-    dateOpened: "",
-    expiryDate: "",
-  });
+  // const [items, setItems] = useState({
+  //   itemName: "",
+  //   dateOpened: "",
+  //   expiryDate: "",
+  // });
+  const [itemName, setItemName] = useState("");
+  const [dateOpened, setDateOpened] = useState("");
+  const [expiryDate, setExpiryDate] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [valid, setValid] = useState(false);
   // const { register, handleSubmit, formState: { errors } } = useForm();
@@ -33,8 +37,24 @@ export default function ProductForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    setSubmitted(true);
+    setItemName("");
+    setDateOpened("");
+    setExpiryDate("");
+    alert(`Form submitted! ${itemName} ${dateOpened} ${expiryDate}`)
+    // if (items.itemName && items.dateOpened && items.expiryDate) {
+    //   setValid(true);
+    //   alert(`${items.itemName} ${items.dateOpened} ${items.expiryDate}`)
+    // }
+
+    // setItems({
+    //   itemName: items.itemName,
+    //   dateOpened: items.dateOpened,
+    //   expiryDate: items.expiryDate
+    // })
+
     // itemName clears but other fields don't 
-    // setitems({
+    // setItems({
     //   itemName: "",
     //   dateOpened: "",
     //   expiryDate: "",
@@ -44,23 +64,22 @@ export default function ProductForm() {
     // save();
   }
 
-  const save = () => {
-    setSubmitted(true);
-    if (items.itemName && items.dateOpened && items.expiryDate) {
-      setValid(true);
-    }
-
-    setitems({
-      itemName: items.itemName,
-      dateOpened: items.dateOpened,
-      expiryDate: items.expiryDate
-    })
-  }
+  // const save = () => {
+  //   setSubmitted(true);
+  //   if (items.itemName && items.dateOpened && items.expiryDate) {
+  //     setValid(true);
+  //   }
+  //   setItems({
+  //     itemName: items.itemName,
+  //     dateOpened: items.dateOpened,
+  //     expiryDate: items.expiryDate
+  //   })
+  // }
 
   // const clearForm = () => {
   //   setSubmitted(false);
   //   setValid(false);
-  //   setitems({
+  //   setItems({
   //     itemName: "",
   //     dateOpened: "",
   //     expiryDate: ""
@@ -82,25 +101,29 @@ export default function ProductForm() {
           <FormLabel>Product:</FormLabel>
           <Input
             className="form-field"
-            value={items.itemName}
-            onChange={(e) => setitems({ ...items, itemName: e.target.value })}
+            // value={items.itemName}
+            value={itemName}
+            // onChange={(e) => setItemName({ ...itemName, itemName: e.target.value })}
+            onChange={(e) => setItemName(e.target.value)}
             placeholder="Product name"
             name="itemName" />
-          {submitted && !items.itemName ? <small className="err-message">Please enter a product</small> : null}
+          {/* {submitted && !items.itemName ? <small className="err-message">Please enter a product</small> : null} */}
           <FormLabel>Date opened:</FormLabel>
           <Input
-            value={items.dateOpened.toLocaleDateString}
-            onInput={(e) => setitems({ ...items, dateOpened: e.target.value })}
+            value={dateOpened.toLocaleDateString}
+            // onInput={(e) => setDateOpened({ ...dateOpened, dateOpened: e.target.value })}
+            onInput={(e) => setDateOpened(e.target.value)}
             type="date"
             name="dateOpened" />
-          {submitted && !items.dateOpened ? <small className="err-message">Please enter a date</small> : null}
+          {/* {submitted && !items.dateOpened ? <small className="err-message">Please enter a date</small> : null} */}
           <FormLabel>Expiry date:</FormLabel>
           <Input
-            value={items.expiryDate.toLocaleDateString}
-            onInput={(e) => setitems({ ...items, expiryDate: e.target.value })}
+            value={expiryDate.toLocaleDateString}
+            // onInput={(e) => setExpiryDate({ ...expiryDate, expiryDate: e.target.value })}
+            onInput={(e) => setExpiryDate(e.target.value)}
             type="date"
             name="expiryDate" />
-          {submitted && !items.expiryDate ? <small className="err-message">Please enter a date</small> : null}
+          {/* {submitted && !items.expiryDate ? <small className="err-message">Please enter a date</small> : null} */}
           <Button type="submit" className="add-product-btn">Add</Button>
         </FormControl>
       </form>
@@ -128,7 +151,7 @@ export default function ProductForm() {
           <Button type="submit" className="add-product-btn">Add</Button>
         </FormControl>
       </form> */}
-      <InUse items={items} />
+      <InUse itemName={itemName} dateOpened={dateOpened} expiryDate={expiryDate} />
     </div>
   );
 }

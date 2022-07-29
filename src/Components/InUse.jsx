@@ -12,8 +12,8 @@ import {
 } from "@chakra-ui/react";
 
 export default function InUse(props) {
-  const data = props.items;
-  // console.log(data)
+  // const data = props.items;
+  console.log(props)
   return (
     <div>
       <TableContainer>
@@ -28,9 +28,9 @@ export default function InUse(props) {
           </Thead>
           <Tbody>
             <Tr>
-              <Th>{data.itemName}</Th>
-              <Th>{data.dateOpened}</Th>
-              <Th>{data.expiryDate}</Th>
+              <Th>{props.itemName}</Th>
+              <Th>{props.dateOpened}</Th>
+              <Th>{props.expiryDate}</Th>
             </Tr>
           </Tbody>
         </Table>

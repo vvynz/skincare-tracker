@@ -16,7 +16,7 @@ import {
 import "../Styles/ProductForm.scss";
 
 export default function ProductForm() {
-  const [items, setFormChangeItems] = useState(
+  const [items, setItems] = useState(
     () => JSON.parse(localStorage.getItem("items")) || []
   );
   const [formData, setFormChangeFormData] = useState({
@@ -59,11 +59,13 @@ export default function ProductForm() {
     const newData = { ...formData };
     // update with new form data
     newData[name] = value;
-    console.log(newData);
+    // console.log(newData);
 
     // setFormChange the newData to state
     setFormChangeFormData(newData);
   };
+
+  console.log(formData);
 
   return (
     <div className="form-container">
@@ -72,27 +74,27 @@ export default function ProductForm() {
           {submitted && valid ? (
             <Alert status="success">
               <AlertIcon />
-              Sucess! Product has been added!
+              Sucess! Item has been added!
             </Alert>
           ) : null}
 
-          <FormLabel>Product:</FormLabel>
+          <FormLabel>Item:</FormLabel>
           <Input
             className="form-field"
             value={formData.itemName}
             // value={itemName}
-            // onChange={(e) => setFormChangeItemName({ ...itemName, itemName: e.target.value })}
+            required="required"
             onChange={setFormChange}
-            placeholder="Product name"
+            placeholder="Item name"
             name="itemName"
           />
           {submitted && !items.itemName ? (
-            <small className="err-message">Please enter a product</small>
+            <small className="err-message">Please enter a item</small>
           ) : null}
           <FormLabel>Date opened:</FormLabel>
           <Input
             value={formData.dateOpened.toLocaleDateString}
-            // onInput={(e) => setFormChangeDateOpened({ ...dateOpened, dateOpened: e.target.value })}
+            required="required"
             onInput={setFormChange}
             type="date"
             name="dateOpened"
@@ -103,7 +105,7 @@ export default function ProductForm() {
           <FormLabel>Expiry date:</FormLabel>
           <Input
             value={formData.expiryDate.toLocaleDateString}
-            // onInput={(e) => setFormChangeExpiryDate({ ...expiryDate, expiryDate: e.target.value })}
+            required="required"
             onInput={setFormChange}
             type="date"
             name="expiryDate"

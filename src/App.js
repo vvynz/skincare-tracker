@@ -1,11 +1,11 @@
 import NavBar from "./Components/NavBar";
-import ProductForm from "./Components/ProductForm";
+import ItemForm from "./Components/ItemForm";
 
 function App() {
   return (
     <div className="App">
       <NavBar />
-      <ProductForm />
+      <ItemForm />
     </div>
   );
 }

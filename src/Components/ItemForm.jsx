@@ -21,7 +21,7 @@ import {
   Th,
 } from "@chakra-ui/react";
 
-import "../Styles/ProductForm.scss";
+import "../Styles/ItemForm.scss";
 
 export default function ProductForm() {
   const [items, setItems] = useState(

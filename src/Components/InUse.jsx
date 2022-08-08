@@ -2,6 +2,7 @@ import React from "react";
 import {
   Tr,
   Th,
+  Button
 } from "@chakra-ui/react";
 
 export default function InUse({ items, deleteItem }) {
@@ -11,7 +12,7 @@ export default function InUse({ items, deleteItem }) {
       <Th>{items.dateOpened}</Th>
       <Th>{items.expiryDate}</Th>
       <Th>
-        <button type="button" onClick={() => deleteItem(items.id)}>Delete</button>
+        <Button size="xs" colorScheme="purple" variant="outline" onClick={() => deleteItem(items.id)}>Delete</Button>
       </Th>
     </Tr>
   );

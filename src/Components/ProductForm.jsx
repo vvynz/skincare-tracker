@@ -16,6 +16,7 @@ import {
   Table,
   TableCaption,
   Thead,
+  Tbody,
   Tr,
   Th,
 } from "@chakra-ui/react";
@@ -138,7 +139,7 @@ export default function ProductForm() {
 
       <TableContainer>
         <Table>
-          <TableCaption></TableCaption>
+          <TableCaption>Current Items in Use:</TableCaption>
           <Thead>
             <Tr>
               <Th>Item:</Th>
@@ -146,6 +147,11 @@ export default function ProductForm() {
               <Th>Expiry Date:</Th>
             </Tr>
           </Thead>
+          <Tbody>
+            {items.map((item) => (
+              <InUse key={item.id} items={item} />
+            ))}
+          </Tbody>
         </Table>
       </TableContainer>
     </div>

@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form"; // REMOVE LATER
 import InUse from "./InUse";
 
 import {
+  Form,
   FormControl,
   FormLabel,
   FormHelperText,
@@ -98,9 +99,10 @@ export default function ProductForm() {
     setItems(newItems);
   };
 
-  function BasicUsage() {
-    const { isOpen, onOpen, onClose } = useDisclosure();
-    return (
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  return (
+    <div className="form-container">
       <>
         <Button onClick={onOpen}>Add Item</Button>
 
@@ -109,64 +111,60 @@ export default function ProductForm() {
           <ModalContent>
             <ModalHeader>Add Item Currently In Use:</ModalHeader>
             <ModalCloseButton />
-            <ModalBody></ModalBody>
+            <ModalBody>
+              <form onSubmit={handleSubmit}>
+                <FormControl className="product-form">
+                  {submitted ? (
+                    <Alert status="success">
+                      <AlertIcon />
+                      Sucess! Item has been added!
+                    </Alert>
+                  ) : null}
+
+                  <FormLabel>Item:</FormLabel>
+                  <Input
+                    className="form-field"
+                    value={formData.itemName}
+                    required="required"
+                    onChange={setFormChange}
+                    placeholder="Item name"
+                    name="itemName"
+                  />
+
+                  <FormLabel>Date opened:</FormLabel>
+                  <Input
+                    value={formData.dateOpened.toLocaleDateString}
+                    required="required"
+                    onInput={setFormChange}
+                    type="date"
+                    name="dateOpened"
+                  />
+
+                  <FormLabel>Expiry date:</FormLabel>
+                  <Input
+                    value={formData.expiryDate.toLocaleDateString}
+                    required="required"
+                    onInput={setFormChange}
+                    type="date"
+                    name="expiryDate"
+                  />
+
+                  <Button
+                    type="submit"
+                    colorScheme="purple"
+                    size="md"
+                    marginTop="10px"
+                    borderRadius="10px"
+                    variant="outline"
+                  >
+                    Add
+                  </Button>
+                </FormControl>
+              </form>
+            </ModalBody>
           </ModalContent>
         </Modal>
       </>
-    );
-  }
-
-  return (
-    <div className="form-container">
-      <form onSubmit={handleSubmit}>
-        <FormControl className="product-form">
-          {submitted ? (
-            <Alert status="success">
-              <AlertIcon />
-              Sucess! Item has been added!
-            </Alert>
-          ) : null}
-
-          <FormLabel>Item:</FormLabel>
-          <Input
-            className="form-field"
-            value={formData.itemName}
-            required="required"
-            onChange={setFormChange}
-            placeholder="Item name"
-            name="itemName"
-          />
-
-          <FormLabel>Date opened:</FormLabel>
-          <Input
-            value={formData.dateOpened.toLocaleDateString}
-            required="required"
-            onInput={setFormChange}
-            type="date"
-            name="dateOpened"
-          />
-
-          <FormLabel>Expiry date:</FormLabel>
-          <Input
-            value={formData.expiryDate.toLocaleDateString}
-            required="required"
-            onInput={setFormChange}
-            type="date"
-            name="expiryDate"
-          />
-
-          <Button
-            type="submit"
-            colorScheme="purple"
-            size="md"
-            marginTop="10px"
-            borderRadius="10px"
-            variant="outline"
-          >
-            Add
-          </Button>
-        </FormControl>
-      </form>
 
       <TableContainer>
         <Table>

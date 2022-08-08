@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { nanoid } from "nanoid";
+import { useForm } from "react-hook-form"; // REMOVE LATER
 
 import InUse from "./InUse";
 
@@ -42,14 +43,24 @@ export default function ProductForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // setSubmitted(true);
 
-    setSubmitted(true);
-   
-    if (items.itemName && items.dateOpened && items.expiryDate) {
-      setValid(true);
-    }
+    // if (items.itemName && items.dateOpened && items.expiryDate) {
+    //   setValid(true);
+    // }
 
-    
+    // create a new obj with the new form values
+    const newItem = {
+      id: nanoid(),
+      itemName: formData.itemName,
+      dateOpened: formData.dateOpened,
+      expiryDate: formData.expiryDate,
+    };
+
+    // create a new items array, copy the prev items and add the new item obj
+    const newItems = [...items, newItem];
+    // set the new items array to state
+    setItems(newItems);
   };
 
   const setFormChange = (e) => {
@@ -66,8 +77,7 @@ export default function ProductForm() {
     // setFormChange the newData to state
     setFormData(newData);
   };
-
-  console.log(formData);
+  console.log(items);
 
   return (
     <div className="form-container">
@@ -144,7 +154,9 @@ export default function ProductForm() {
           <Button type="submit" className="add-product-btn">Add</Button>
         </FormControl>
       </form> */}
-      <InUse items={items} />
+      {items.map((item) => (
+        <InUse key={item.id} items={item} />
+      ))}
     </div>
   );
 }

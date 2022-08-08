@@ -131,7 +131,7 @@ export default function ProductForm() {
             name="expiryDate"
           />
 
-          <Button type="submit" className="add-product-btn">
+          <Button type="submit" colorScheme="purple" size="md" marginTop="10px" borderRadius="10px" variant="outline">
             Add
           </Button>
         </FormControl>

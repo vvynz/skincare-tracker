@@ -50,7 +50,6 @@ export default function ProductForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // setSubmitted(true);
 
     // if (items.itemName && items.dateOpened && items.expiryDate) {
     //   setValid(true);
@@ -68,6 +67,7 @@ export default function ProductForm() {
     const newItems = [...items, newItem];
     // set the new items array to state
     setItems(newItems);
+    setSubmitted(true);
   };
 
   const setFormChange = (e) => {
@@ -90,7 +90,7 @@ export default function ProductForm() {
     <div className="form-container">
       <form onSubmit={handleSubmit}>
         <FormControl className="product-form">
-          {submitted && valid ? (
+          {submitted ? (
             <Alert status="success">
               <AlertIcon />
               Sucess! Item has been added!
@@ -106,9 +106,7 @@ export default function ProductForm() {
             placeholder="Item name"
             name="itemName"
           />
-          {submitted && !items.itemName ? (
-            <small className="err-message">Please enter a item</small>
-          ) : null}
+          
           <FormLabel>Date opened:</FormLabel>
           <Input
             value={formData.dateOpened.toLocaleDateString}
@@ -117,20 +115,16 @@ export default function ProductForm() {
             type="date"
             name="dateOpened"
           />
-          {submitted && !items.dateOpened ? (
-            <small className="err-message">Please enter a date</small>
-          ) : null}
+          
           <FormLabel>Expiry date:</FormLabel>
           <Input
             value={formData.expiryDate.toLocaleDateString}
-            // required="required"
+            required="required"
             onInput={setFormChange}
             type="date"
             name="expiryDate"
           />
-          {submitted && !formData.expiryDate ? (
-            <small className="err-message">Please enter a date</small>
-          ) : null}
+          
           <Button type="submit" className="add-product-btn">
             Add
           </Button>

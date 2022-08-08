@@ -32,17 +32,9 @@ export default function ProductForm() {
     dateOpened: "",
     expiryDate: "",
   });
-  // const [itemName, setFormChangeItemName] = useState("");
-  // const [dateOpened, setFormChangeDateOpened] = useState("");
-  // const [expiryDate, setFormChangeExpiryDate] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [valid, setValid] = useState(false);
-  // const { register, handleSubmit, formState: { errors } } = useForm();
-  // const onSubmit = (data) => {
-  // alert(JSON.stringify(data))
-  // console.log(data);
-  // console.log(errors)
-  // };
+
 
   useEffect(() => {
     localStorage.setItem("items", JSON.stringify(items));

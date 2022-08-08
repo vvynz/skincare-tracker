@@ -19,7 +19,7 @@ export default function ProductForm() {
   const [items, setItems] = useState(
     () => JSON.parse(localStorage.getItem("items")) || []
   );
-  const [formData, setFormChangeFormData] = useState({
+  const [formData, setFormData] = useState({
     itemName: "",
     dateOpened: "",
     expiryDate: "",
@@ -27,8 +27,8 @@ export default function ProductForm() {
   // const [itemName, setFormChangeItemName] = useState("");
   // const [dateOpened, setFormChangeDateOpened] = useState("");
   // const [expiryDate, setFormChangeExpiryDate] = useState("");
-  const [submitted, setFormChangeSubmitted] = useState(false);
-  const [valid, setFormChangeValid] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [valid, setValid] = useState(false);
   // const { register, handleSubmit, formState: { errors } } = useForm();
   // const onSubmit = (data) => {
   // alert(JSON.stringify(data))
@@ -43,11 +43,13 @@ export default function ProductForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    setFormChangeSubmitted(true);
+    setSubmitted(true);
    
     if (items.itemName && items.dateOpened && items.expiryDate) {
-      setFormChangeValid(true);
+      setValid(true);
     }
+
+    
   };
 
   const setFormChange = (e) => {
@@ -62,7 +64,7 @@ export default function ProductForm() {
     // console.log(newData);
 
     // setFormChange the newData to state
-    setFormChangeFormData(newData);
+    setFormData(newData);
   };
 
   console.log(formData);

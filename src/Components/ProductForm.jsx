@@ -87,6 +87,19 @@ export default function ProductForm() {
     setFormData(newData);
   };
 
+  const deleteItem = (itemID) => {
+    // create a new array and copy prev items array
+    const newItems = [...items];
+
+    // find the index of the selected item in the items array
+    const index = newItems.findIndex((item) => item.id === itemID);
+    // remove the selected item from array
+    newItems.splice(index, 1);
+
+    //set the newItems array to state
+    setItems(newItems);
+  };
+
   return (
     <div className="form-container">
       <form onSubmit={handleSubmit}>
@@ -107,7 +120,7 @@ export default function ProductForm() {
             placeholder="Item name"
             name="itemName"
           />
-          
+
           <FormLabel>Date opened:</FormLabel>
           <Input
             value={formData.dateOpened.toLocaleDateString}
@@ -116,7 +129,7 @@ export default function ProductForm() {
             type="date"
             name="dateOpened"
           />
-          
+
           <FormLabel>Expiry date:</FormLabel>
           <Input
             value={formData.expiryDate.toLocaleDateString}
@@ -125,7 +138,7 @@ export default function ProductForm() {
             type="date"
             name="expiryDate"
           />
-          
+
           <Button type="submit" className="add-product-btn">
             Add
           </Button>
@@ -145,7 +158,7 @@ export default function ProductForm() {
           </Thead>
           <Tbody>
             {items.map((item) => (
-              <InUse key={item.id} items={item} />
+              <InUse key={item.id} items={item} deleteItem={deleteItem} />
             ))}
           </Tbody>
         </Table>

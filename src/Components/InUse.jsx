@@ -8,11 +8,12 @@ import {
   Th,
   Td,
   TableCaption,
-  TableContainer
+  TableContainer,
 } from "@chakra-ui/react";
 
-export default function InUse(props) {
-  const data = props.items;
+export default function InUse({ items }) {
+  // const items = props.items;
+  console.log(items);
   return (
     <div>
       <TableContainer>
@@ -27,13 +28,13 @@ export default function InUse(props) {
           </Thead>
           <Tbody>
             <Tr>
-              <Th>{data.itemName}</Th>
-              <Th>{data.dateOpened}</Th>
-              <Th>{data.expiryDate}</Th>
+              <Th>{items.itemName}</Th>
+              <Th>{items.dateOpened}</Th>
+              <Th>{items.expiryDate}</Th>
             </Tr>
           </Tbody>
         </Table>
       </TableContainer>
     </div>
-  )
+  );
 }

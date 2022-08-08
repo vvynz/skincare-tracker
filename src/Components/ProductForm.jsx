@@ -64,6 +64,13 @@ export default function ProductForm() {
     // set the new items array to state
     setItems(newItems);
     setSubmitted(true);
+
+    //// ONLY ITEMNAME WILL CLEAR
+    // setFormData({
+    //   itemName: "",
+    //   dateOpened: "",
+    //   expiryDate: ""
+    // })
   };
 
   const setFormChange = (e) => {
@@ -133,6 +140,7 @@ export default function ProductForm() {
               <Th>Item:</Th>
               <Th>Date Opened:</Th>
               <Th>Expiry Date:</Th>
+              <Th>Actions</Th>
             </Tr>
           </Thead>
           <Tbody>

@@ -19,6 +19,13 @@ import {
   Tbody,
   Tr,
   Th,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
 } from "@chakra-ui/react";
 
 import "../Styles/ItemForm.scss";
@@ -34,7 +41,6 @@ export default function ProductForm() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [valid, setValid] = useState(false);
-
 
   useEffect(() => {
     localStorage.setItem("items", JSON.stringify(items));
@@ -92,6 +98,24 @@ export default function ProductForm() {
     setItems(newItems);
   };
 
+  function BasicUsage() {
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    return (
+      <>
+        <Button onClick={onOpen}>Add Item</Button>
+
+        <Modal isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Add Item Currently In Use:</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody></ModalBody>
+          </ModalContent>
+        </Modal>
+      </>
+    );
+  }
+
   return (
     <div className="form-container">
       <form onSubmit={handleSubmit}>
@@ -131,7 +155,14 @@ export default function ProductForm() {
             name="expiryDate"
           />
 
-          <Button type="submit" colorScheme="purple" size="md" marginTop="10px" borderRadius="10px" variant="outline">
+          <Button
+            type="submit"
+            colorScheme="purple"
+            size="md"
+            marginTop="10px"
+            borderRadius="10px"
+            variant="outline"
+          >
             Add
           </Button>
         </FormControl>

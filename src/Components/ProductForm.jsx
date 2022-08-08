@@ -44,16 +44,10 @@ export default function ProductForm() {
     e.preventDefault();
 
     setFormChangeSubmitted(true);
-    // setFormChangeItemName("");
-    // setFormChangeDateOpened("");
-    // setFormChangeExpiryDate("");
-    // alert(`Form submitted! ${itemName} ${dateOpened} ${expiryDate}`)
+   
     if (items.itemName && items.dateOpened && items.expiryDate) {
       setFormChangeValid(true);
     }
-
-    // clearForm();
-    // save();
   };
 
   const setFormChange = (e) => {
@@ -65,35 +59,11 @@ export default function ProductForm() {
     const newData = { ...formData };
     // update with new form data
     newData[name] = value;
+    console.log(newData);
 
     // setFormChange the newData to state
     setFormChangeFormData(newData);
-    // return ({ target: { value } }) => {
-    //   setFormChangeItems((prev) => ({ ...prev, [name]: value }));
-    // };
   };
-
-  // const save = () => {
-  //   setFormChangeSubmitted(true);
-  //   if (items.itemName && items.dateOpened && items.expiryDate) {
-  //     setFormChangeValid(true);
-  //   }
-  //   setFormChangeItems({
-  //     itemName: items.itemName,
-  //     dateOpened: items.dateOpened,
-  //     expiryDate: items.expiryDate
-  //   })
-  // }
-
-  // const clearForm = () => {
-  //   setFormChangeSubmitted(false);
-  //   setFormChangeValid(false);
-  //   setFormChangeItems({
-  //     itemName: "",
-  //     dateOpened: "",
-  //     expiryDate: ""
-  //   })
-  // }
 
   return (
     <div className="form-container">
@@ -109,7 +79,7 @@ export default function ProductForm() {
           <FormLabel>Product:</FormLabel>
           <Input
             className="form-field"
-            // value={items.itemName}
+            value={formData.itemName}
             // value={itemName}
             // onChange={(e) => setFormChangeItemName({ ...itemName, itemName: e.target.value })}
             onChange={setFormChange}
@@ -121,7 +91,7 @@ export default function ProductForm() {
           ) : null}
           <FormLabel>Date opened:</FormLabel>
           <Input
-            // value={dateOpened.toLocaleDateString}
+            value={formData.dateOpened.toLocaleDateString}
             // onInput={(e) => setFormChangeDateOpened({ ...dateOpened, dateOpened: e.target.value })}
             onInput={setFormChange}
             type="date"
@@ -132,7 +102,7 @@ export default function ProductForm() {
           ) : null}
           <FormLabel>Expiry date:</FormLabel>
           <Input
-            // value={items.expiryDate.toLocaleDateString}
+            value={formData.expiryDate.toLocaleDateString}
             // onInput={(e) => setFormChangeExpiryDate({ ...expiryDate, expiryDate: e.target.value })}
             onInput={setFormChange}
             type="date"

@@ -12,10 +12,8 @@ import {
 } from "@chakra-ui/react";
 
 export default function InUse({ items }) {
-  // const items = props.items;
-  console.log(items);
+ 
   return (
-    <div>
       <TableContainer>
         <Table>
           <TableCaption>Current Products In Use:</TableCaption>
@@ -35,6 +33,5 @@ export default function InUse({ items }) {
           </Tbody>
         </Table>
       </TableContainer>
-    </div>
   );
 }

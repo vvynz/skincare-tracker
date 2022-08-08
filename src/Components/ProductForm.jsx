@@ -16,17 +16,19 @@ import {
 import "../Styles/ProductForm.scss";
 
 export default function ProductForm() {
-  const [items, setItems] = useState(() => JSON.parse(localStorage.getItem("items")) || []);
-  const [formData, setFormData] = ({
+  const [items, setFormChangeItems] = useState(
+    () => JSON.parse(localStorage.getItem("items")) || []
+  );
+  const [formData, setFormChangeFormData] = useState({
     itemName: "",
     dateOpened: "",
     expiryDate: "",
   });
-  // const [itemName, setItemName] = useState("");
-  // const [dateOpened, setDateOpened] = useState("");
-  // const [expiryDate, setExpiryDate] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-  const [valid, setValid] = useState(false);
+  // const [itemName, setFormChangeItemName] = useState("");
+  // const [dateOpened, setFormChangeDateOpened] = useState("");
+  // const [expiryDate, setFormChangeExpiryDate] = useState("");
+  const [submitted, setFormChangeSubmitted] = useState(false);
+  const [valid, setFormChangeValid] = useState(false);
   // const { register, handleSubmit, formState: { errors } } = useForm();
   // const onSubmit = (data) => {
   // alert(JSON.stringify(data))
@@ -41,31 +43,42 @@ export default function ProductForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    setSubmitted(true);
-    // setItemName("");
-    // setDateOpened("");
-    // setExpiryDate("");
+    setFormChangeSubmitted(true);
+    // setFormChangeItemName("");
+    // setFormChangeDateOpened("");
+    // setFormChangeExpiryDate("");
     // alert(`Form submitted! ${itemName} ${dateOpened} ${expiryDate}`)
     if (items.itemName && items.dateOpened && items.expiryDate) {
-      setValid(true);
+      setFormChangeValid(true);
     }
 
     // clearForm();
     // save();
   };
 
-  const set = (name) => {
-    return ({ target: { value } }) => {
-      setItems((prev) => ({ ...prev, [name]: value }));
-    };
+  const setFormChange = (e) => {
+    e.preventDefault();
+
+    const { name, value } = e.target;
+
+    // create a new obj and copy the prev formData
+    const newData = { ...formData };
+    // update with new form data
+    newData[name] = value;
+
+    // setFormChange the newData to state
+    setFormChangeFormData(newData);
+    // return ({ target: { value } }) => {
+    //   setFormChangeItems((prev) => ({ ...prev, [name]: value }));
+    // };
   };
 
   // const save = () => {
-  //   setSubmitted(true);
+  //   setFormChangeSubmitted(true);
   //   if (items.itemName && items.dateOpened && items.expiryDate) {
-  //     setValid(true);
+  //     setFormChangeValid(true);
   //   }
-  //   setItems({
+  //   setFormChangeItems({
   //     itemName: items.itemName,
   //     dateOpened: items.dateOpened,
   //     expiryDate: items.expiryDate
@@ -73,9 +86,9 @@ export default function ProductForm() {
   // }
 
   // const clearForm = () => {
-  //   setSubmitted(false);
-  //   setValid(false);
-  //   setItems({
+  //   setFormChangeSubmitted(false);
+  //   setFormChangeValid(false);
+  //   setFormChangeItems({
   //     itemName: "",
   //     dateOpened: "",
   //     expiryDate: ""
@@ -96,10 +109,10 @@ export default function ProductForm() {
           <FormLabel>Product:</FormLabel>
           <Input
             className="form-field"
-            value={items.itemName}
+            // value={items.itemName}
             // value={itemName}
-            // onChange={(e) => setItemName({ ...itemName, itemName: e.target.value })}
-            onChange={set("itemName")}
+            // onChange={(e) => setFormChangeItemName({ ...itemName, itemName: e.target.value })}
+            onChange={setFormChange}
             placeholder="Product name"
             name="itemName"
           />
@@ -108,9 +121,9 @@ export default function ProductForm() {
           ) : null}
           <FormLabel>Date opened:</FormLabel>
           <Input
-            value={items.dateOpened.toLocaleDateString}
-            // onInput={(e) => setDateOpened({ ...dateOpened, dateOpened: e.target.value })}
-            onInput={set("dateOpened")}
+            // value={dateOpened.toLocaleDateString}
+            // onInput={(e) => setFormChangeDateOpened({ ...dateOpened, dateOpened: e.target.value })}
+            onInput={setFormChange}
             type="date"
             name="dateOpened"
           />
@@ -119,9 +132,9 @@ export default function ProductForm() {
           ) : null}
           <FormLabel>Expiry date:</FormLabel>
           <Input
-            value={items.expiryDate.toLocaleDateString}
-            // onInput={(e) => setExpiryDate({ ...expiryDate, expiryDate: e.target.value })}
-            onInput={set("expiryDate")}
+            // value={items.expiryDate.toLocaleDateString}
+            // onInput={(e) => setFormChangeExpiryDate({ ...expiryDate, expiryDate: e.target.value })}
+            onInput={setFormChange}
             type="date"
             name="expiryDate"
           />

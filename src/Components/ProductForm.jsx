@@ -51,10 +51,6 @@ export default function ProductForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // if (items.itemName && items.dateOpened && items.expiryDate) {
-    //   setValid(true);
-    // }
-
     // create a new obj with the new form values
     const newItem = {
       id: nanoid(),
@@ -79,12 +75,10 @@ export default function ProductForm() {
     const newData = { ...formData };
     // update with new form data
     newData[name] = value;
-    // console.log(newData);
 
     // setFormChange the newData to state
     setFormData(newData);
   };
-  console.log(items);
 
   return (
     <div className="form-container">

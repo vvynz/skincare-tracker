@@ -12,6 +12,12 @@ import {
   Button,
   Alert,
   AlertIcon,
+  TableContainer,
+  Table,
+  TableCaption,
+  Thead,
+  Tr,
+  Th,
 } from "@chakra-ui/react";
 
 import "../Styles/ProductForm.scss";
@@ -94,7 +100,6 @@ export default function ProductForm() {
           <Input
             className="form-field"
             value={formData.itemName}
-            // value={itemName}
             required="required"
             onChange={setFormChange}
             placeholder="Item name"
@@ -117,12 +122,12 @@ export default function ProductForm() {
           <FormLabel>Expiry date:</FormLabel>
           <Input
             value={formData.expiryDate.toLocaleDateString}
-            required="required"
+            // required="required"
             onInput={setFormChange}
             type="date"
             name="expiryDate"
           />
-          {submitted && !items.expiryDate ? (
+          {submitted && !formData.expiryDate ? (
             <small className="err-message">Please enter a date</small>
           ) : null}
           <Button type="submit" className="add-product-btn">
@@ -131,32 +136,18 @@ export default function ProductForm() {
         </FormControl>
       </form>
 
-      {/* <form onSubmit={handleSubmit(onSubmit)}>
-        <FormControl className="product-form">
-          <FormLabel>Product:</FormLabel>
-          <Input
-            className="form-field"
-            type="text"
-            placeholder="Product name"
-            {...register("Product name", { required: true })} />
-
-          <FormLabel>Date opened:</FormLabel>
-          <Input
-            type="datetime"
-            placeholder="yyyy-mm-dd"
-            {...register("Date opened", {})} />
-
-          <FormLabel>Expiry date:</FormLabel>
-          <Input
-            type="datetime"
-            placeholder="yyyy-mm-dd"
-            {...register("Expiry date", {})} />
-          <Button type="submit" className="add-product-btn">Add</Button>
-        </FormControl>
-      </form> */}
-      {items.map((item) => (
-        <InUse key={item.id} items={item} />
-      ))}
+      <TableContainer>
+        <Table>
+          <TableCaption></TableCaption>
+          <Thead>
+            <Tr>
+              <Th>Item:</Th>
+              <Th>Date Opened:</Th>
+              <Th>Expiry Date:</Th>
+            </Tr>
+          </Thead>
+        </Table>
+      </TableContainer>
     </div>
   );
 }

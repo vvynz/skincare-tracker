@@ -16,12 +16,12 @@ import {
 import "../Styles/ProductForm.scss";
 
 export default function ProductForm() {
-  const [items, setItems] = useState();
-  const [formData, setFormData] = {
+  const [items, setItems] = useState(() => JSON.parse(localStorage.getItem("items")) || []);
+  const [formData, setFormData] = ({
     itemName: "",
     dateOpened: "",
     expiryDate: "",
-  };
+  });
   // const [itemName, setItemName] = useState("");
   // const [dateOpened, setDateOpened] = useState("");
   // const [expiryDate, setExpiryDate] = useState("");

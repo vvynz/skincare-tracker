@@ -10,18 +10,18 @@ import {
   Input,
   Button,
   Alert,
-  AlertIcon
+  AlertIcon,
 } from "@chakra-ui/react";
 
 import "../Styles/ProductForm.scss";
 
-
 export default function ProductForm() {
-  const [items, setItems] = useState({
+  const [items, setItems] = useState();
+  const [formData, setFormData] = {
     itemName: "",
     dateOpened: "",
     expiryDate: "",
-  });
+  };
   // const [itemName, setItemName] = useState("");
   // const [dateOpened, setDateOpened] = useState("");
   // const [expiryDate, setExpiryDate] = useState("");
@@ -36,7 +36,7 @@ export default function ProductForm() {
 
   useEffect(() => {
     localStorage.setItem("items", JSON.stringify(items));
-  }, [items])
+  }, [items]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -48,18 +48,17 @@ export default function ProductForm() {
     // alert(`Form submitted! ${itemName} ${dateOpened} ${expiryDate}`)
     if (items.itemName && items.dateOpened && items.expiryDate) {
       setValid(true);
-      
     }
 
     // clearForm();
     // save();
-  }
+  };
 
   const set = (name) => {
-    return ({target: { value }}) => {
-      setItems(prev => ({...prev, [name]: value }));
-    }
-  }
+    return ({ target: { value } }) => {
+      setItems((prev) => ({ ...prev, [name]: value }));
+    };
+  };
 
   // const save = () => {
   //   setSubmitted(true);
@@ -87,13 +86,12 @@ export default function ProductForm() {
     <div className="form-container">
       <form onSubmit={handleSubmit}>
         <FormControl className="product-form">
-
-          {submitted && valid ?
+          {submitted && valid ? (
             <Alert status="success">
               <AlertIcon />
               Sucess! Product has been added!
             </Alert>
-            : null}
+          ) : null}
 
           <FormLabel>Product:</FormLabel>
           <Input
@@ -103,25 +101,36 @@ export default function ProductForm() {
             // onChange={(e) => setItemName({ ...itemName, itemName: e.target.value })}
             onChange={set("itemName")}
             placeholder="Product name"
-            name="itemName" />
-          {submitted && !items.itemName ? <small className="err-message">Please enter a product</small> : null}
+            name="itemName"
+          />
+          {submitted && !items.itemName ? (
+            <small className="err-message">Please enter a product</small>
+          ) : null}
           <FormLabel>Date opened:</FormLabel>
           <Input
             value={items.dateOpened.toLocaleDateString}
             // onInput={(e) => setDateOpened({ ...dateOpened, dateOpened: e.target.value })}
             onInput={set("dateOpened")}
             type="date"
-            name="dateOpened" />
-          {submitted && !items.dateOpened ? <small className="err-message">Please enter a date</small> : null}
+            name="dateOpened"
+          />
+          {submitted && !items.dateOpened ? (
+            <small className="err-message">Please enter a date</small>
+          ) : null}
           <FormLabel>Expiry date:</FormLabel>
           <Input
             value={items.expiryDate.toLocaleDateString}
             // onInput={(e) => setExpiryDate({ ...expiryDate, expiryDate: e.target.value })}
             onInput={set("expiryDate")}
             type="date"
-            name="expiryDate" />
-          {submitted && !items.expiryDate ? <small className="err-message">Please enter a date</small> : null}
-          <Button type="submit" className="add-product-btn">Add</Button>
+            name="expiryDate"
+          />
+          {submitted && !items.expiryDate ? (
+            <small className="err-message">Please enter a date</small>
+          ) : null}
+          <Button type="submit" className="add-product-btn">
+            Add
+          </Button>
         </FormControl>
       </form>
 

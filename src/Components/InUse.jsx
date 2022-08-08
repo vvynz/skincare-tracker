@@ -13,8 +13,6 @@ import {
 
 export default function InUse(props) {
   const data = props.items;
-  const el = JSON.parse(localStorage.getItem("items"));
-  console.log(el)
   return (
     <div>
       <TableContainer>
@@ -29,8 +27,8 @@ export default function InUse(props) {
           </Thead>
           <Tbody>
             <Tr>
-              <Th>{el.itemName}</Th>
-              <Th>{el.dateOpened}</Th>
+              <Th>{data.itemName}</Th>
+              <Th>{data.dateOpened}</Th>
               <Th>{data.expiryDate}</Th>
             </Tr>
           </Tbody>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 import InUse from "./InUse";
@@ -34,6 +34,10 @@ export default function ProductForm() {
   // console.log(errors)
   // };
 
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(items));
+  }, [items])
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -45,8 +49,6 @@ export default function ProductForm() {
     if (items.itemName && items.dateOpened && items.expiryDate) {
       setValid(true);
       
-      // stringify the form values & save to localstorage
-      localStorage.setItem("items", JSON.stringify(items));
     }
 
     // clearForm();

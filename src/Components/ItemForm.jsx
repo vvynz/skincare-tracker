@@ -104,7 +104,7 @@ export default function ProductForm() {
   return (
     <div className="form-container">
       <>
-        <Button onClick={onOpen}>Add Item</Button>
+        <Button colorScheme="purple" onClick={onOpen}>Add Item</Button>
 
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />

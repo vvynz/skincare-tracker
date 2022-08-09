@@ -1,8 +1,9 @@
 .form-container {
-  border: 1px solid white;
-  // margin: auto 0;
+  // border: 1px solid white;
+  margin: 0 auto;
   display: flex;
-  // justify-content: space-between;
+  // should update with media queries
+  max-width: 1000px;
 }
 
 .product-form {
@@ -23,11 +24,16 @@
 }
 
 .table_container {
-  border: 1px solid white;
+  // border: 1px solid white;
   display: block;
-  margin: 10px 20px;
+  margin: 0px 20px;
 }
 
 .side-nav {
-  border: 1px solid white;
+  // border: 1px solid white;
+}
+
+.success_msg {
+  // animation: 
+  animation-duration: 5s;
 }

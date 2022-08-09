@@ -117,7 +117,7 @@ export default function ProductForm() {
               <form onSubmit={handleSubmit}>
                 <FormControl className="product-form">
                   {submitted ? (
-                    <Alert status="success">
+                    <Alert className="success_msg" status="success">
                       <AlertIcon />
                       Sucess! Item has been added!
                     </Alert>

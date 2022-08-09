@@ -1,20 +1,33 @@
 .form-container {
-  // border: 1px solid black;
+  border: 1px solid white;
   // margin: auto 0;
   display: flex;
-  // justify-content: start;
+  // justify-content: space-between;
 }
 
 .product-form {
   border: 1px solid black;
   display: flex;
   flex-direction: column;
-  margin: 20px;
+  margin-bottom: 20px;
   padding: 20px;
   justify-content: space-between;
 }
 
-.product-form label,
-input {
+.input-field {
   margin-bottom: 10px;
+}
+
+.add_item_btn {
+  margin-left: 20px;
+}
+
+.table_container {
+  border: 1px solid white;
+  display: block;
+  margin: 10px 20px;
+}
+
+.side-nav {
+  border: 1px solid white;
 }

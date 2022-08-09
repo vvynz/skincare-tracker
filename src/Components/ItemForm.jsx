@@ -103,8 +103,10 @@ export default function ProductForm() {
 
   return (
     <div className="form-container">
-      <>
-        <Button colorScheme="purple" onClick={onOpen}>Add Item</Button>
+      <nav className="side-nav">
+        <Button className="add_item_btn" colorScheme="purple" onClick={onOpen}>
+          Add Item
+        </Button>
 
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
@@ -123,7 +125,7 @@ export default function ProductForm() {
 
                   <FormLabel>Item:</FormLabel>
                   <Input
-                    className="form-field"
+                    className="input-field"
                     value={formData.itemName}
                     required="required"
                     onChange={setFormChange}
@@ -133,6 +135,7 @@ export default function ProductForm() {
 
                   <FormLabel>Date opened:</FormLabel>
                   <Input
+                    className="input-field"
                     value={formData.dateOpened.toLocaleDateString}
                     required="required"
                     onInput={setFormChange}
@@ -142,6 +145,7 @@ export default function ProductForm() {
 
                   <FormLabel>Expiry date:</FormLabel>
                   <Input
+                    className="input-field"
                     value={formData.expiryDate.toLocaleDateString}
                     required="required"
                     onInput={setFormChange}
@@ -164,9 +168,9 @@ export default function ProductForm() {
             </ModalBody>
           </ModalContent>
         </Modal>
-      </>
+      </nav>
 
-      <TableContainer>
+      <TableContainer className="table_container">
         <Table>
           <TableCaption>Current Items in Use:</TableCaption>
           <Thead>

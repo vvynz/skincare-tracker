@@ -5,14 +5,14 @@ import {
   Button
 } from "@chakra-ui/react";
 
-export default function InUse({ items, deleteItem }) {
+export default function InUse({ item, editItem, deleteItem }) {
   return (
     <Tr>
-      <Th>{items.itemName}</Th>
-      <Th>{items.dateOpened}</Th>
-      <Th>{items.expiryDate}</Th>
+      <Th>{item.itemName}</Th>
+      <Th>{item.dateOpened}</Th>
+      <Th>{item.expiryDate}</Th>
       <Th>
-        <Button size="xs" colorScheme="purple" variant="outline" onClick={() => deleteItem(items.id)}>Delete</Button>
+        <Button size="xs" colorScheme="purple" variant="outline" onClick={() => deleteItem(item.id)}>Delete</Button>
       </Th>
     </Tr>
   );

@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form"; // REMOVE LATER
 import InUse from "./InUse";
 
 import {
-  Form,
   FormControl,
   FormLabel,
   FormHelperText,
@@ -91,6 +90,11 @@ export default function ProductForm() {
     // setFormChange the newData to state
     setFormData(newData);
   };
+
+  const editItem = (e, item) => {
+    e.preventDefault();
+    setEditItemID(item.id);
+  }
 
   const deleteItem = (itemID) => {
     // create a new array and copy prev items array
@@ -189,7 +193,7 @@ export default function ProductForm() {
           </Thead>
           <Tbody>
             {items.map((item) => (
-              <InUse key={item.id} items={item} deleteItem={deleteItem} />
+              <InUse key={item.id} item={item} editItem={editItem} deleteItem={deleteItem} />
             ))}
           </Tbody>
         </Table>

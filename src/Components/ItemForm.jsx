@@ -94,7 +94,17 @@ export default function ProductForm() {
   const editItem = (e, item) => {
     e.preventDefault();
     setEditItemID(item.id);
+
+    //create a new obj with the selected item's form values
+    const formValues = {
+      itemName: item.itemName,
+      dateOpened: item.dateOpened,
+      expiryDate: item.expiryDate
+    }
+
+    setEditFormData(formValues);
   }
+  // console.log(editItemID);
 
   const deleteItem = (itemID) => {
     // create a new array and copy prev items array

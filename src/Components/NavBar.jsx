@@ -9,7 +9,7 @@ export default function NavBar() {
   return (
     <header>
       <Heading>🌼 skincare tracker.</Heading>
-      <Button onClick={toggleColorMode}>
+      <Button size="xs" onClick={toggleColorMode}>
         Toggle {colorMode === "light" ? "dark" : "light"}
       </Button>
     </header>

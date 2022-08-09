@@ -3,11 +3,11 @@
   margin: 0 auto;
   display: flex;
   // should update with media queries
-  max-width: 1000px;
+  max-width: 1010px;
 }
 
 .product-form {
-  border: 1px solid black;
+  border: 1px solid white;
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
@@ -27,6 +27,12 @@
   // border: 1px solid white;
   display: block;
   margin: 0px 20px;
+}
+
+.table_container th:last-child button {
+  // display: flex;
+  // justify-content: space-evenly;
+  margin-right: 10px;
 }
 
 .side-nav {

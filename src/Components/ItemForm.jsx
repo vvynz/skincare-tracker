@@ -40,6 +40,12 @@ export default function ProductForm() {
     dateOpened: "",
     expiryDate: "",
   });
+  const [editFormData, setEditFormData] = useState({
+    itemName: "",
+    dateOpened: "",
+    expiryDate: "",
+  })
+  const [editItemID, setEditItemID] = useState(null);
   const [submitted, setSubmitted] = useState(false);
   const [valid, setValid] = useState(false);
 

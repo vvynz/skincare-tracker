@@ -232,37 +232,39 @@ export default function ProductForm() {
       </nav>
 
       <TableContainer className="table_container">
-        <Table>
-          <TableCaption>Current Items in Use:</TableCaption>
-          <Thead>
-            <Tr>
-              <Th>Item:</Th>
-              <Th>Date Opened:</Th>
-              <Th>Expiry Date:</Th>
-              <Th>Actions</Th>
-            </Tr>
-          </Thead>
-          <Tbody>
-            {items.map((item) => (
-              <>
-                {editItemID === item.id ? (
-                  <InUseEditable
-                    editFormData={editFormData}
-                    handleEditFormChange={handleEditFormChange}
-                    cancel={cancel}
-                  />
-                ) : (
-                  <InUse
-                    key={item.id}
-                    item={item}
-                    editItem={editItem}
-                    deleteItem={deleteItem}
-                  />
-                )}
-              </>
-            ))}
-          </Tbody>
-        </Table>
+        <form onSubmit={handleEditFormSubmit}>
+          <Table>
+            <TableCaption>Current Items in Use:</TableCaption>
+            <Thead>
+              <Tr>
+                <Th>Item:</Th>
+                <Th>Date Opened:</Th>
+                <Th>Expiry Date:</Th>
+                <Th>Actions</Th>
+              </Tr>
+            </Thead>
+            <Tbody>
+              {items.map((item) => (
+                <>
+                  {editItemID === item.id ? (
+                    <InUseEditable
+                      editFormData={editFormData}
+                      handleEditFormChange={handleEditFormChange}
+                      cancel={cancel}
+                    />
+                  ) : (
+                    <InUse
+                      key={item.id}
+                      item={item}
+                      editItem={editItem}
+                      deleteItem={deleteItem}
+                    />
+                  )}
+                </>
+              ))}
+            </Tbody>
+          </Table>
+        </form>
       </TableContainer>
     </div>
   );

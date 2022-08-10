@@ -3,6 +3,7 @@ import { nanoid } from "nanoid";
 import { useForm } from "react-hook-form"; // REMOVE LATER
 
 import InUse from "./InUse";
+import InUseEditable from "./InUseEditable";
 
 import {
   FormControl,
@@ -43,7 +44,7 @@ export default function ProductForm() {
     itemName: "",
     dateOpened: "",
     expiryDate: "",
-  })
+  });
   const [editItemID, setEditItemID] = useState(null);
   const [submitted, setSubmitted] = useState(false);
   const [valid, setValid] = useState(false);
@@ -99,11 +100,11 @@ export default function ProductForm() {
     const formValues = {
       itemName: item.itemName,
       dateOpened: item.dateOpened,
-      expiryDate: item.expiryDate
-    }
+      expiryDate: item.expiryDate,
+    };
 
     setEditFormData(formValues);
-  }
+  };
   // console.log(editItemID);
 
   const deleteItem = (itemID) => {
@@ -203,7 +204,18 @@ export default function ProductForm() {
           </Thead>
           <Tbody>
             {items.map((item) => (
-              <InUse key={item.id} item={item} editItem={editItem} deleteItem={deleteItem} />
+              <>
+                { editItemID === item.id ? (
+                  <InUseEditable editFormData={editFormData} />
+                ) : (
+                  <InUse
+                    key={item.id}
+                    item={item}
+                    editItem={editItem}
+                    deleteItem={deleteItem}
+                  />
+                )}
+              </>
             ))}
           </Tbody>
         </Table>

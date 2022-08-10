@@ -1,7 +1,7 @@
 import { Tr, Th, Input } from "@chakra-ui/react";
 
-export default function InUseEditable() {
-  return 
+export default function InUseEditable({ editFormData }) {
+  return;
   <Tr>
     <Th>
       <Input />

@@ -107,6 +107,17 @@ export default function ProductForm() {
   };
   // console.log(editItemID);
 
+  const handleEditFormChange = (e) => {
+    e.preventDefault();
+
+    const { name, value } = e.target;
+
+    // create a new obj with the form values being edited, before saving to state
+    const updFormData = {...editFormData};
+    updFormData[name] = value;
+    setEditFormData(updFormData);
+  };
+
   const deleteItem = (itemID) => {
     // create a new array and copy prev items array
     const newItems = [...items];
@@ -210,7 +221,10 @@ export default function ProductForm() {
             {items.map((item) => (
               <>
                 {editItemID === item.id ? (
-                  <InUseEditable editFormData={editFormData} cancel={cancel} />
+                  <InUseEditable 
+                  editFormData={editFormData} 
+                  handleEditFormChange={handleEditFormChange} 
+                  cancel={cancel} />
                 ) : (
                   <InUse
                     key={item.id}

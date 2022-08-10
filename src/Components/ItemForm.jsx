@@ -120,6 +120,10 @@ export default function ProductForm() {
     setItems(newItems);
   };
 
+  const cancel = () => {
+    setEditItemID(null);
+  };
+
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -205,8 +209,8 @@ export default function ProductForm() {
           <Tbody>
             {items.map((item) => (
               <>
-                { editItemID === item.id ? (
-                  <InUseEditable editFormData={editFormData} />
+                {editItemID === item.id ? (
+                  <InUseEditable editFormData={editFormData} cancel={cancel} />
                 ) : (
                   <InUse
                     key={item.id}

@@ -1,6 +1,6 @@
 import { Tr, Th, Input, Button } from "@chakra-ui/react";
 
-export default function InUseEditable({ editFormData }) {
+export default function InUseEditable({ editFormData, cancel }) {
   return (
     <Tr>
       <Th>
@@ -13,7 +13,7 @@ export default function InUseEditable({ editFormData }) {
         <Input value={editFormData.expiryDate.toLocaleDateString} required="required" />
       </Th>
       <Th>
-        <Button size="xs" colorScheme="purple" variant="outline" >Cancel</Button>
+        <Button size="xs" colorScheme="purple" variant="outline" onClick={cancel} >Cancel</Button>
       </Th>
     </Tr>
   );

@@ -113,11 +113,35 @@ export default function ProductForm() {
     const { name, value } = e.target;
 
     // create a new obj with the form values being edited, before saving to state
-    const updFormData = {...editFormData};
+    const updFormData = { ...editFormData };
     updFormData[name] = value;
     setEditFormData(updFormData);
   };
-  console.log(editFormData)
+  // console.log(editFormData)
+
+  const handleEditFormSubmit = (e) => {
+    e.preventDefault();
+
+    // create a new obj with the new form values during editing
+    const editedItem = {
+      id: editItemID,
+      itemName: editFormData.itemName,
+      dateOpened: editFormData.dateOpened,
+      expiryDate: editFormData.expiryDate,
+    };
+
+    //create a copy of the items array
+    const newItems = [...items];
+
+    // Find the index of the item being edited
+    const index = items.findIndex((item) => item.id === editItemID);
+    // update the item with the update values
+    newItems[index] = editedItem;
+
+    //saved the updated item to state
+    setItems(newItems);
+    setEditItemID(null);
+  };
 
   const deleteItem = (itemID) => {
     // create a new array and copy prev items array
@@ -222,10 +246,11 @@ export default function ProductForm() {
             {items.map((item) => (
               <>
                 {editItemID === item.id ? (
-                  <InUseEditable 
-                  editFormData={editFormData} 
-                  handleEditFormChange={handleEditFormChange} 
-                  cancel={cancel} />
+                  <InUseEditable
+                    editFormData={editFormData}
+                    handleEditFormChange={handleEditFormChange}
+                    cancel={cancel}
+                  />
                 ) : (
                   <InUse
                     key={item.id}

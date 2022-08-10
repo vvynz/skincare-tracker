@@ -117,6 +117,7 @@ export default function ProductForm() {
     updFormData[name] = value;
     setEditFormData(updFormData);
   };
+  console.log(editFormData)
 
   const deleteItem = (itemID) => {
     // create a new array and copy prev items array

@@ -117,7 +117,7 @@ export default function ProductForm() {
     updFormData[name] = value;
     setEditFormData(updFormData);
   };
-  // console.log(editFormData)
+  console.log(editFormData)
 
   const handleEditFormSubmit = (e) => {
     e.preventDefault();

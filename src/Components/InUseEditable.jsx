@@ -1,16 +1,20 @@
-import { Tr, Th, Input } from "@chakra-ui/react";
+import { Tr, Th, Input, Button } from "@chakra-ui/react";
 
 export default function InUseEditable({ editFormData }) {
-  return;
-  <Tr>
-    <Th>
-      <Input />
-    </Th>
-    <Th>
-      <Input />
-    </Th>
-    <Th>
-      <Input />
-    </Th>
-  </Tr>;
+  return (
+    <Tr>
+      <Th>
+        <Input name="itemName" value={editFormData.itemName} required="required" />
+      </Th>
+      <Th>
+        <Input value={editFormData.dateOpened.toLocaleDateString} required="required" />
+      </Th>
+      <Th>
+        <Input value={editFormData.expiryDate.toLocaleDateString} required="required" />
+      </Th>
+      <Th>
+        <Button size="xs" colorScheme="purple" variant="outline" >Cancel</Button>
+      </Th>
+    </Tr>
+  );
 }

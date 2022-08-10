@@ -7,10 +7,10 @@ export default function InUseEditable({ editFormData, handleEditFormChange, canc
         <Input name="itemName" value={editFormData.itemName} required="required" onChange={handleEditFormChange} />
       </Th>
       <Th>
-        <Input type="date" value={editFormData.dateOpened.toLocaleDateString} required="required" onChange={handleEditFormChange} />
+        <Input type="date" name="dateOpened" value={editFormData.dateOpened.toLocaleDateString} required="required" onChange={handleEditFormChange} />
       </Th>
       <Th>
-        <Input type="date" value={editFormData.expiryDate.toLocaleDateString} required="required" onChange={handleEditFormChange} />
+        <Input type="date" name="expiryDate" value={editFormData.expiryDate.toLocaleDateString} required="required" onChange={handleEditFormChange} />
       </Th>
       <Th>
         <button type="submit" size="xs" colorScheme="purple" variant="outline" >Save</button>

@@ -119,7 +119,7 @@ export default function ProductForm() {
     setEditFormData(updFormData);
   };
 
-
+  
   const handleEditFormSubmit = (e) => {
     e.preventDefault();
 
@@ -143,7 +143,7 @@ export default function ProductForm() {
     setItems(newItems);
     setEditItemID(null);
   };
-  
+
 
   const deleteItem = (itemID) => {
     // create a new array and copy prev items array

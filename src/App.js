@@ -4,11 +4,13 @@ import Wishlist from "./Components/Wishlist";
 
 import { Tab, Tabs, TabList, TabPanel, TabPanels } from "@chakra-ui/react";
 
+import "./Styles/App.scss";
+
 function App() {
   return (
     <div className="App">
       <NavBar />
-      <Tabs>
+      <Tabs className="tabs" variant="enclosed" colorScheme="purple">
         <TabList>
           <Tab>Currently In Use</Tab>
           <Tab>Wishlist</Tab>

@@ -1,5 +1,11 @@
 import React from "react";
 
+import { FormControl, FormLabel, Input, Button } from "@chakra-ui/react";
+
 export default function Wishlist() {
-  return <h3>Wishlist</h3>;
+  return (
+    <form>
+      
+    </form>
+  );
 }

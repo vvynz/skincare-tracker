@@ -33,9 +33,10 @@ export default function Wishlist() {
             <ModalCloseButton />
             <ModalBody>
               <form>
-                <FormControl>
+                <FormControl className="wishlist_form">
                   <FormLabel>Brand:</FormLabel>
                   <Input
+                    className="input_field"
                     name="brand"
                     type="text"
                     required="required"
@@ -43,6 +44,7 @@ export default function Wishlist() {
                   />
                   <FormLabel>Item Name:</FormLabel>
                   <Input
+                    className="input_field"
                     name="itemName"
                     type="text"
                     required="required"

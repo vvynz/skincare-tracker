@@ -17,38 +17,52 @@ import {
 import "../Styles/Wishlist.scss";
 
 export default function Wishlist() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <section className="wishlist">
       <nav>
-        <Button colorScheme="purple">Add Item</Button>
-        <form>
-          <FormControl>
-            <FormLabel>Brand:</FormLabel>
-            <Input
-              name="brand"
-              type="text"
-              required="required"
-              placeholder="Enter a brand name..."
-            />
-            <FormLabel>Item Name:</FormLabel>
-            <Input
-              name="itemName"
-              type="text"
-              required="required"
-              placeholder="Enter item name..."
-            />
-            <Button
-              type="submit"
-              colorScheme="purple"
-              size="md"
-              marginTop="10px"
-              borderRadius="10px"
-              variant="outline"
-            >
-              Add
-            </Button>
-          </FormControl>
-        </form>
+        <Button colorScheme="purple" onClick={onOpen}>
+          Add Item
+        </Button>
+
+        <Modal isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Add to Wishlist:</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              <form>
+                <FormControl>
+                  <FormLabel>Brand:</FormLabel>
+                  <Input
+                    name="brand"
+                    type="text"
+                    required="required"
+                    placeholder="Enter a brand name..."
+                  />
+                  <FormLabel>Item Name:</FormLabel>
+                  <Input
+                    name="itemName"
+                    type="text"
+                    required="required"
+                    placeholder="Enter item name..."
+                  />
+                  <Button
+                    type="submit"
+                    colorScheme="purple"
+                    size="md"
+                    marginTop="10px"
+                    borderRadius="10px"
+                    variant="outline"
+                  >
+                    Add
+                  </Button>
+                </FormControl>
+              </form>
+            </ModalBody>
+          </ModalContent>
+        </Modal>
       </nav>
     </section>
   );

@@ -12,6 +12,13 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
+  TableContainer,
+  Table,
+  TableCaption,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
 } from "@chakra-ui/react";
 
 import "../Styles/Wishlist.scss";
@@ -66,6 +73,19 @@ export default function Wishlist() {
           </ModalContent>
         </Modal>
       </nav>
+
+      <TableContainer className="table_container">
+        <Table>
+          <TableCaption>Wishlist</TableCaption>
+          <Thead>
+            <Tr>
+              <Th>Brand:</Th>
+              <Th>Item:</Th>
+              <Th>Actions:</Th>
+            </Tr>
+          </Thead>
+        </Table>
+      </TableContainer>
     </section>
   );
 }

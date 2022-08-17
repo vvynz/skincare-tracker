@@ -1,5 +1,12 @@
 import React from "react";
 
-export default function Wishlist() {
-  return("HI");
+import { Tr, Th, Button } from "@chakra-ui/react";
+
+export default function Wishlist({ wishlist }) {
+  return (
+    <Tr>
+      <Th>{wishlist.brand}</Th>
+      <Th>{wishlist.itemName}</Th>
+    </Tr>
+  );
 }

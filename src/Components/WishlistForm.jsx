@@ -24,9 +24,10 @@ import {
 } from "@chakra-ui/react";
 
 import "../Styles/Wishlist.scss";
+import { nanoid } from "nanoid";
 
 export default function WishlistForm() {
-  const [wishlist, setWishlist] = useState("");
+  const [wishlist, setWishlist] = useState([]);
   const [formData, setFormData] = useState({
     brand: "",
     itemName: ""
@@ -43,7 +44,21 @@ export default function WishlistForm() {
 
     setFormData(newData);
   }
-  console.log(formData)
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const newWishlistItem = {
+      id: nanoid(),
+      brand: formData.brand,
+      itemName: formData.itemName,
+    }
+
+    const newItems = [...wishlist, newWishlistItem];
+
+    setWishlist(newItems);
+  }
+  
 
   return (
     <section className="wishlist">
@@ -58,7 +73,7 @@ export default function WishlistForm() {
             <ModalHeader>Add to Wishlist:</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-              <form>
+              <form onSubmit={handleSubmit}>
                 <FormControl className="wishlist_form">
                   <FormLabel>Brand:</FormLabel>
                   <Input

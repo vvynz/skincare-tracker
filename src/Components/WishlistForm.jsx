@@ -83,6 +83,9 @@ export default function Wishlist() {
               <Th>Item:</Th>
               <Th>Actions:</Th>
             </Tr>
+            <Tbody>
+              
+            </Tbody>
           </Thead>
         </Table>
       </TableContainer>

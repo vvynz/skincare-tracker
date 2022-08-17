@@ -1,6 +1,6 @@
 import NavBar from "./Components/NavBar";
 import ItemForm from "./Components/ItemForm";
-import Wishlist from "./Components/Wishlist";
+import WishlistForm from "./Components/WishlistForm";
 
 import { Tab, Tabs, TabList, TabPanel, TabPanels } from "@chakra-ui/react";
 
@@ -20,7 +20,7 @@ function App() {
             <ItemForm />
           </TabPanel>
           <TabPanel>
-            <Wishlist />
+            <WishlistForm />
           </TabPanel>
         </TabPanels>
       </Tabs>

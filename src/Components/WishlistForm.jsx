@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Wishlist from "./Wishlist";
 import WishlistEditable from "./WishlistEditable";
 
@@ -27,23 +27,29 @@ import "../Styles/Wishlist.scss";
 import { nanoid } from "nanoid";
 
 export default function WishlistForm() {
-  const [wishlist, setWishlist] = useState([]);
+  const [wishlist, setWishlist] = useState(
+    () => JSON.parse(localStorage.getItem("wishlist")) || []
+  );
   const [formData, setFormData] = useState({
     brand: "",
-    itemName: ""
-  })
+    itemName: "",
+  });
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  useEffect(() => {
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+  }, [wishlist]);
 
   const setWishlistFormChange = (e) => {
     e.preventDefault();
 
-    const {name, value} = e.target;
+    const { name, value } = e.target;
 
-    const newData = {...formData};
+    const newData = { ...formData };
     newData[name] = value;
 
     setFormData(newData);
-  }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -52,13 +58,12 @@ export default function WishlistForm() {
       id: nanoid(),
       brand: formData.brand,
       itemName: formData.itemName,
-    }
+    };
 
     const newItems = [...wishlist, newWishlistItem];
 
     setWishlist(newItems);
-  }
-  
+  };
 
   return (
     <section className="wishlist">
@@ -123,12 +128,12 @@ export default function WishlistForm() {
             </Tr>
           </Thead>
           <Tbody>
-            {/* {wishlist.map((item) => ( */}
+            {wishlist.map((item) => (
               <>
-                {/* <Wishlist key={item.id} items={item} /> */}
-                <Wishlist wishlist={wishlist} />
+                <Wishlist key={item.id} items={item} />
+                {/* <Wishlist wishlist={wishlist} /> */}
               </>
-            {/* ))} */}
+            ))}
           </Tbody>
         </Table>
       </TableContainer>

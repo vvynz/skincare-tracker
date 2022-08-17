@@ -1,4 +1,6 @@
 import React from "react";
+import Wishlist from "./Wishlist";
+import WishlistEditable from "./WishlistEditable";
 
 import {
   FormControl,
@@ -23,7 +25,7 @@ import {
 
 import "../Styles/Wishlist.scss";
 
-export default function Wishlist() {
+export default function WishlistForm() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (

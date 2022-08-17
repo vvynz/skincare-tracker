@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Wishlist from "./Wishlist";
 import WishlistEditable from "./WishlistEditable";
 
@@ -26,6 +26,11 @@ import {
 import "../Styles/Wishlist.scss";
 
 export default function WishlistForm() {
+  const [wishlist, setWishlist] = useState("");
+  const [formData, setFormData] = useState({
+    brand: "",
+    itemName: ""
+  })
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -85,10 +90,15 @@ export default function WishlistForm() {
               <Th>Item:</Th>
               <Th>Actions:</Th>
             </Tr>
-            <Tbody>
-              
-            </Tbody>
           </Thead>
+          <Tbody>
+            {/* {wishlist.map((item) => ( */}
+              <>
+                {/* <Wishlist key={item.id} items={item} /> */}
+                <Wishlist wishlist={wishlist} />
+              </>
+            {/* ))} */}
+          </Tbody>
         </Table>
       </TableContainer>
     </section>

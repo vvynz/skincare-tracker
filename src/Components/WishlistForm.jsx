@@ -33,6 +33,18 @@ export default function WishlistForm() {
   })
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  const setWishlistFormChange = (e) => {
+    e.preventDefault();
+
+    const {name, value} = e.target;
+
+    const newData = {...formData};
+    newData[name] = value;
+
+    setFormData(newData);
+  }
+  console.log(formData)
+
   return (
     <section className="wishlist">
       <nav>
@@ -52,17 +64,21 @@ export default function WishlistForm() {
                   <Input
                     className="input_field"
                     name="brand"
+                    value={formData.brand}
                     type="text"
                     required="required"
                     placeholder="Enter a brand name..."
+                    onChange={setWishlistFormChange}
                   />
                   <FormLabel>Item Name:</FormLabel>
                   <Input
                     className="input_field"
                     name="itemName"
+                    value={formData.itemName}
                     type="text"
                     required="required"
                     placeholder="Enter item name..."
+                    onChange={setWishlistFormChange}
                   />
                   <Button
                     type="submit"

@@ -49,7 +49,6 @@ export default function ProductForm() {
   });
   const [editItemID, setEditItemID] = useState(null);
   const [submitted, setSubmitted] = useState(false);
-  const [valid, setValid] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("items", JSON.stringify(items));
@@ -162,8 +161,6 @@ export default function ProductForm() {
   const cancel = () => {
     setEditItemID(null);
   };
-
-  console.log(formData);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 

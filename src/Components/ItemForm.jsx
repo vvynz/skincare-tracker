@@ -162,6 +162,14 @@ export default function ProductForm() {
     setEditItemID(null);
   };
 
+  const toggleRepurchase = (id) => {
+    setItems((oldItems) =>
+      oldItems.map((item) => {
+        return item.id === id ? {...item, repurchase: !item.repurchase} : item;
+      })
+    );
+  };
+
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -271,6 +279,7 @@ export default function ProductForm() {
                     <InUse
                       key={item.id}
                       item={item}
+                      toggleRepurchase={() => toggleRepurchase(item.id)}
                       editItem={editItem}
                       deleteItem={deleteItem}
                     />

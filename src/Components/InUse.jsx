@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Checkbox, Tr, Th } from "@chakra-ui/react";
 
-export default function InUse({ item, editItem, deleteItem }) {
+export default function InUse({ item, editItem, deleteItem, toggleRepurchase }) {
   console.log(item);
   return (
     <Tr>
@@ -9,7 +9,13 @@ export default function InUse({ item, editItem, deleteItem }) {
       <Th>{item.dateOpened}</Th>
       <Th>{item.expiryDate}</Th>
       <Th>
-        <Checkbox className="repurchase" colorScheme="purple" spacing="1rem" isChecked={item.repurchase}>Yes</Checkbox>
+        <Checkbox 
+        className="repurchase" 
+        colorScheme="purple" 
+        spacing="1rem" 
+        isChecked={item.repurchase}
+        onChange={toggleRepurchase}
+        >Yes</Checkbox>
       </Th>
       <Th>
         <Button

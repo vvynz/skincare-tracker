@@ -13,7 +13,7 @@ export default function InUseEditable({ editFormData, handleEditFormChange, canc
         <Input type="date" name="expiryDate" value={editFormData.expiryDate.toLocaleDateString} required="required" onChange={handleEditFormChange} />
       </Th>
       <Th>
-        <button type="submit" size="xs" colorScheme="purple" variant="outline" >Save</button>
+        <Button type="submit" size="xs" colorScheme="purple" variant="outline" >Save</Button>
         <Button size="xs" colorScheme="purple" variant="outline" onClick={cancel} >Cancel</Button>
       </Th>
     </Tr>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
-import { useForm } from "react-hook-form"; // REMOVE LATER
 
 import InUse from "./InUse";
 import InUseEditable from "./InUseEditable";

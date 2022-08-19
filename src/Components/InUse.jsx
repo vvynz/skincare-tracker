@@ -2,11 +2,15 @@ import React from "react";
 import { Tr, Th, Button } from "@chakra-ui/react";
 
 export default function InUse({ item, editItem, deleteItem }) {
+  console.log(item)
   return (
     <Tr>
       <Th>{item.itemName}</Th>
       <Th>{item.dateOpened}</Th>
       <Th>{item.expiryDate}</Th>
+      <Th>
+        <input type="checkbox" checked={item.repurchase} />
+      </Th>
       <Th>
         <Button
           size="xs"

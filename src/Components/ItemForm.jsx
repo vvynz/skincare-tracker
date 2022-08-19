@@ -256,6 +256,7 @@ export default function ProductForm() {
                 <Th>Item:</Th>
                 <Th>Date Opened:</Th>
                 <Th>Expiry Date:</Th>
+                <Th>Repurchase?</Th>
                 <Th>Actions</Th>
               </Tr>
             </Thead>

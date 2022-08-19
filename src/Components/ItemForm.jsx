@@ -39,11 +39,13 @@ export default function ProductForm() {
     itemName: "",
     dateOpened: "",
     expiryDate: "",
+    repurchase: false,
   });
   const [editFormData, setEditFormData] = useState({
     itemName: "",
     dateOpened: "",
     expiryDate: "",
+    repurchase: false,
   });
   const [editItemID, setEditItemID] = useState(null);
   const [submitted, setSubmitted] = useState(false);
@@ -62,6 +64,7 @@ export default function ProductForm() {
       itemName: formData.itemName,
       dateOpened: formData.dateOpened,
       expiryDate: formData.expiryDate,
+      repurchase: formData.repurchase,
     };
 
     // create a new items array, copy the prev items and add the new item obj
@@ -101,6 +104,7 @@ export default function ProductForm() {
       itemName: item.itemName,
       dateOpened: item.dateOpened,
       expiryDate: item.expiryDate,
+      repurchase: item.repurchase,
     };
 
     setEditFormData(formValues);
@@ -126,6 +130,7 @@ export default function ProductForm() {
       itemName: editFormData.itemName,
       dateOpened: editFormData.dateOpened,
       expiryDate: editFormData.expiryDate,
+      repurchase: editFormData.repurchase,
     };
 
     //create a copy of the items array
@@ -157,6 +162,8 @@ export default function ProductForm() {
   const cancel = () => {
     setEditItemID(null);
   };
+
+  console.log(formData);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -215,8 +222,8 @@ export default function ProductForm() {
                   <FormLabel>Repurchase?</FormLabel>
                   <div className="repurchase-container">
                     <input
-                      className="checkbox-field"
-                      // id="repurchase"
+                      className="input-field"
+                      value={formData.repurchase}
                       type="checkbox"
                       name="repurchase"
                     />

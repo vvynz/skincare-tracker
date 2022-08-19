@@ -128,6 +128,7 @@ export default function WishlistForm() {
             </Tr>
           </Thead>
           <Tbody>
+            <WishlistEditable />
             {wishlist.map((item) => (
               <>
                 <Wishlist key={item.id} items={item} />

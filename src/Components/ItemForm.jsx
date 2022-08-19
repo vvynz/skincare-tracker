@@ -219,7 +219,7 @@ export default function ProductForm() {
                     name="expiryDate"
                   />
 
-                  <FormLabel>Repurchase?</FormLabel>
+                  {/* <FormLabel>Repurchase?</FormLabel>
                   <div className="repurchase-container">
                     <input
                       className="input-field"
@@ -228,7 +228,7 @@ export default function ProductForm() {
                       name="repurchase"
                     />
                     <label className="repurchase-label">Yes</label>
-                  </div>
+                  </div> */}
 
                   <Button
                     type="submit"

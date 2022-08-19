@@ -8,7 +8,6 @@ import InUseEditable from "./InUseEditable";
 import {
   FormControl,
   FormLabel,
-  FormHelperText,
   Input,
   Button,
   Alert,
@@ -223,17 +222,6 @@ export default function ProductForm() {
                     type="date"
                     name="expiryDate"
                   />
-
-                  {/* <FormLabel>Repurchase?</FormLabel>
-                  <div className="repurchase-container">
-                    <input
-                      className="input-field"
-                      value={formData.repurchase}
-                      type="checkbox"
-                      name="repurchase"
-                    />
-                    <label className="repurchase-label">Yes</label>
-                  </div> */}
 
                   <Button
                     type="submit"

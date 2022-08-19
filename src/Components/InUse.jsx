@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Checkbox, Tr, Th } from "@chakra-ui/react";
 
 export default function InUse({ item, editItem, deleteItem, toggleRepurchase }) {
-  console.log(item);
+
   return (
     <Tr>
       <Th>{item.itemName}</Th>

@@ -165,9 +165,7 @@ export default function ProductForm() {
   const toggleRepurchase = (id) => {
     setItems((oldItems) =>
       oldItems.map((item) => {
-        return item.id === id
-          ? { ...item, repurchase: !item.repurchase }
-          : item;
+        return item.id === id ? {...item, repurchase: !item.repurchase} : item;
       })
     );
   };
@@ -273,7 +271,6 @@ export default function ProductForm() {
                   {editItemID === item.id ? (
                     <InUseEditable
                       key={item.id}
-                      toggleRepurchase={() => toggleRepurchase(item.id)}
                       editFormData={editFormData}
                       handleEditFormChange={handleEditFormChange}
                       cancel={cancel}

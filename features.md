@@ -3,9 +3,13 @@
 ## Current products in rotation
 
 - List each product's name & expiration date
-  - if no expiration date, then provide date opened
+  - include a date opened
+  - include an expiry date
   - if expiration date is approaching, create a reminder (a month before expiry)
+  - add a repurchase option (checkbox?)
+  - add an edit function
   - add a delete function
+  - maybe add a section for notes? (i.e. pros & cons)
 
 ## Products purchased
 

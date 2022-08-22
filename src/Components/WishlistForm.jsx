@@ -34,6 +34,10 @@ export default function WishlistForm() {
     brand: "",
     itemName: "",
   });
+  const [editFormData, setEditFormData] = useState({
+    brand: "",
+    itemName: "",
+  })
   const [editWishListItemID, setEditWishlistItemID] = useState(null);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -71,6 +75,7 @@ export default function WishlistForm() {
     e.preventDefault();
     console.log(item.id);
   }
+
 
   return (
     <section className="wishlist">

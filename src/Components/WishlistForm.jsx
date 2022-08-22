@@ -139,9 +139,9 @@ export default function WishlistForm() {
             {wishlist.map((item) => (
               <>
                 {editWishListItemID === item.id ? (
-                  <WishlistEditable key={item.id} editWishlistItem={editWishlistItem} />
+                  <WishlistEditable key={item.id} />
                 ) : (
-                  <Wishlist key={item.id} items={item} />
+                  <Wishlist key={item.id} items={item} editWishlistItem={editWishlistItem} />
                 )}
               </>
             ))}

@@ -37,7 +37,7 @@ export default function WishlistForm() {
   const [editFormData, setEditFormData] = useState({
     brand: "",
     itemName: "",
-  })
+  });
   const [editWishListItemID, setEditWishlistItemID] = useState(null);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -73,9 +73,15 @@ export default function WishlistForm() {
 
   const editWishlistItem = (e, item) => {
     e.preventDefault();
-    console.log(item.id);
-  }
+    setEditWishlistItemID(item.id);
 
+    const formData = {
+      brand: item.brand,
+      itemName: item.itemName,
+    };
+
+    setEditFormData(formData);
+  };
 
   return (
     <section className="wishlist">
@@ -146,7 +152,11 @@ export default function WishlistForm() {
                 {editWishListItemID === item.id ? (
                   <WishlistEditable key={item.id} />
                 ) : (
-                  <Wishlist key={item.id} items={item} editWishlistItem={editWishlistItem} />
+                  <Wishlist
+                    key={item.id}
+                    items={item}
+                    editWishlistItem={editWishlistItem}
+                  />
                 )}
               </>
             ))}

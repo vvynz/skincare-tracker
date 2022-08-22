@@ -53,7 +53,8 @@ export default function ProductForm() {
   }, [items]);
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    //this will reset the form...
+    // e.preventDefault();
 
     // create a new obj with the new form values
     const newItem = {
@@ -70,11 +71,12 @@ export default function ProductForm() {
     setItems(newItems);
     setSubmitted(true);
 
-    //// ONLY ITEMNAME WILL CLEAR
+    // ONLY ITEMNAME WILL CLEAR
     // setFormData({
     //   itemName: "",
     //   dateOpened: "",
-    //   expiryDate: ""
+    //   expiryDate: "",
+    //   repurchase: false
     // })
   };
 

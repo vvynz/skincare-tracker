@@ -83,6 +83,10 @@ export default function WishlistForm() {
     setEditFormData(formData);
   };
 
+  const cancel = () => {
+    setEditWishlistItemID(null);
+  };
+
   return (
     <section className="wishlist">
       <nav>
@@ -150,7 +154,7 @@ export default function WishlistForm() {
             {wishlist.map((item) => (
               <>
                 {editWishListItemID === item.id ? (
-                  <WishlistEditable key={item.id} />
+                  <WishlistEditable key={item.id} cancel={cancel} />
                 ) : (
                   <Wishlist
                     key={item.id}

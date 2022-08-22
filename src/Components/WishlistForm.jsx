@@ -34,6 +34,8 @@ export default function WishlistForm() {
     brand: "",
     itemName: "",
   });
+  const [editWishListItemID, setEditWishlistItemID] = useState(null);
+
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
@@ -128,11 +130,14 @@ export default function WishlistForm() {
             </Tr>
           </Thead>
           <Tbody>
-            <WishlistEditable />
+            {/* <WishlistEditable /> */}
             {wishlist.map((item) => (
               <>
-                <Wishlist key={item.id} items={item} />
-                {/* <Wishlist wishlist={wishlist} /> */}
+                {editWishListItemID === item.id ? (
+                  <WishlistEditable key={item.id} />
+                ) : (
+                  <Wishlist key={item.id} items={item} />
+                )}
               </>
             ))}
           </Tbody>

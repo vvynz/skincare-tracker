@@ -83,6 +83,19 @@ export default function WishlistForm() {
     setEditFormData(formData);
   };
 
+  const handleWishlistEditFormChange = (e) => {
+    e.preventDefault();
+
+    const { name, value } = e.target;
+
+    const updData = { ...editFormData };
+    updData[name] = value;
+    console.log("updating...", updData);
+
+    setEditFormData(updData);
+  };
+  console.log(editFormData);
+
   const deleteItem = (id) => {
     const newData = [...wishlist];
 
@@ -164,7 +177,11 @@ export default function WishlistForm() {
             {wishlist.map((item) => (
               <>
                 {editWishListItemID === item.id ? (
-                  <WishlistEditable key={item.id} cancel={cancel} />
+                  <WishlistEditable
+                    key={item.id}
+                    handleWishlistEditFormChange={handleWishlistEditFormChange}
+                    cancel={cancel}
+                  />
                 ) : (
                   <Wishlist
                     key={item.id}

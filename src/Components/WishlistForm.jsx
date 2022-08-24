@@ -90,11 +90,25 @@ export default function WishlistForm() {
 
     const updData = { ...editFormData };
     updData[name] = value;
-    console.log("updating...", updData);
 
     setEditFormData(updData);
   };
-  console.log(editFormData);
+
+  const handleWishlistEditFormSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(editWishListItemID);
+
+    const updWishlistItem = {
+      id: editWishListItemID,
+      brand:editFormData.brand,
+      itemName: editFormData.itemName,
+    }
+
+    const updItems = [...wishlist, updWishlistItem];
+    console.log(updItems);
+    setWishlist(updItems);
+  };
 
   const deleteItem = (id) => {
     const newData = [...wishlist];
@@ -163,37 +177,41 @@ export default function WishlistForm() {
       </nav>
 
       <TableContainer className="table_container">
-        <Table>
-          <TableCaption>Wishlist</TableCaption>
-          <Thead>
-            <Tr>
-              <Th>Brand:</Th>
-              <Th>Item:</Th>
-              <Th>Actions:</Th>
-            </Tr>
-          </Thead>
-          <Tbody>
-            {/* <WishlistEditable /> */}
-            {wishlist.map((item) => (
-              <>
-                {editWishListItemID === item.id ? (
-                  <WishlistEditable
-                    key={item.id}
-                    handleWishlistEditFormChange={handleWishlistEditFormChange}
-                    cancel={cancel}
-                  />
-                ) : (
-                  <Wishlist
-                    key={item.id}
-                    items={item}
-                    editWishlistItem={editWishlistItem}
-                    deleteItem={deleteItem}
-                  />
-                )}
-              </>
-            ))}
-          </Tbody>
-        </Table>
+        <form onSubmit={handleWishlistEditFormSubmit}>
+          <Table>
+            <TableCaption>Wishlist</TableCaption>
+            <Thead>
+              <Tr>
+                <Th>Brand:</Th>
+                <Th>Item:</Th>
+                <Th>Actions:</Th>
+              </Tr>
+            </Thead>
+            <Tbody>
+              {/* <WishlistEditable /> */}
+              {wishlist.map((item) => (
+                <>
+                  {editWishListItemID === item.id ? (
+                    <WishlistEditable
+                      key={item.id}
+                      handleWishlistEditFormChange={
+                        handleWishlistEditFormChange
+                      }
+                      cancel={cancel}
+                    />
+                  ) : (
+                    <Wishlist
+                      key={item.id}
+                      items={item}
+                      editWishlistItem={editWishlistItem}
+                      deleteItem={deleteItem}
+                    />
+                  )}
+                </>
+              ))}
+            </Tbody>
+          </Table>
+        </form>
       </TableContainer>
     </section>
   );

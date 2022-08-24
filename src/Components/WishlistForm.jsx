@@ -69,6 +69,10 @@ export default function WishlistForm() {
     const newItems = [...wishlist, newWishlistItem];
 
     setWishlist(newItems);
+    setFormData({
+      brand: "",
+      itemName: ""
+    })
   };
 
   const editWishlistItem = (e, item) => {

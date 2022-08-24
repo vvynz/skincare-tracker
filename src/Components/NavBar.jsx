@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useColorMode } from "@chakra-ui/react";
 import { Button, Heading } from "@chakra-ui/react";
 
-import logo from "../Assets/logo2.png";
+import logo from "../Assets/logo.png";
 
 import "../Styles/NavBar.scss";
 

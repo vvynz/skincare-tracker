@@ -9,7 +9,7 @@ export default function Wishlist({ items, editWishlistItem, deleteItem }) {
       <Th>{items.itemName}</Th>
       <Th>
         <Button size="xs" colorScheme="purple" variant="outline" onClick={(e)=>editWishlistItem(e, items)}>Edit</Button>
-        <Button size="xs" colorScheme="purple" variant="outline" onClick={(e)=> deleteItem(e, items)}>Delete</Button>
+        <Button size="xs" colorScheme="purple" variant="outline" onClick={()=> deleteItem(items.id)}>Delete</Button>
       </Th>
     </Tr>
   );

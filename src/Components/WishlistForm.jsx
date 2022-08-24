@@ -83,6 +83,11 @@ export default function WishlistForm() {
     setEditFormData(formData);
   };
 
+  const deleteItem = (e, item) => {
+    e.preventDefault();
+    console.log(item.id);
+  }
+
   const cancel = () => {
     setEditWishlistItemID(null);
   };
@@ -160,6 +165,7 @@ export default function WishlistForm() {
                     key={item.id}
                     items={item}
                     editWishlistItem={editWishlistItem}
+                    deleteItem={deleteItem}
                   />
                 )}
               </>

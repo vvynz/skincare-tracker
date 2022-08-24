@@ -105,9 +105,12 @@ export default function WishlistForm() {
       itemName: editFormData.itemName,
     }
 
-    const updItems = [...wishlist, updWishlistItem];
-    console.log(updItems);
+    const updItems = [...wishlist];
+    const index = updItems.findIndex((item) => item.id === editWishListItemID)
+    updItems[index] = updWishlistItem;
+
     setWishlist(updItems);
+    setEditWishlistItemID(null);
   };
 
   const deleteItem = (id) => {
@@ -194,6 +197,7 @@ export default function WishlistForm() {
                   {editWishListItemID === item.id ? (
                     <WishlistEditable
                       key={item.id}
+                      editFormData={editFormData}
                       handleWishlistEditFormChange={
                         handleWishlistEditFormChange
                       }

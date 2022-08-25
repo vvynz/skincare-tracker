@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useColorMode } from "@chakra-ui/react";
 import { Button, Heading } from "@chakra-ui/react";
+import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 
 import logo from "../Assets/logo.png";
+import logo_col from "../Assets/skincare.png";
 
 import "../Styles/NavBar.scss";
 
@@ -11,11 +13,11 @@ export default function NavBar() {
   return (
     <header>
       <nav className="navbar">
-        <img className="logo" src={logo} alt="Logo icon" />
+        <img className="logo" src={logo_col} alt="Logo icon" />
         <Heading>skincare tracker.</Heading>
       </nav>
-      <Button size="xs" onClick={toggleColorMode}>
-        Toggle {colorMode === "light" ? "dark" : "light"}
+      <Button size="sm" onClick={toggleColorMode}>
+        {colorMode === "light" ? <MoonIcon boxSize="1.5em" color="purple.700" /> : <SunIcon boxSize="1.5em" color="yellow.300" />}
       </Button>
     </header>
   );

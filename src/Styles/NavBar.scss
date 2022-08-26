@@ -17,11 +17,13 @@ header {
 
 .toggle--colorMode {
   // border: 1px solid white;
-  padding: 0 10px;
   background: transparent;
-  border-radius: 10px;
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5em;
 }
 
 .toggle--colorMode:hover {
-  background: RGBA(255, 255, 255, 0.08);
+  // background: RGBA(255, 255, 255, 0.08);
+  background: rgb(203, 213, 224, 0.4);
 }

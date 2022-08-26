@@ -16,9 +16,9 @@ export default function NavBar() {
         <img className="logo" src={logo_col} alt="Logo icon" />
         <Heading>skincare tracker.</Heading>
       </nav>
-      <Button size="sm" onClick={toggleColorMode}>
-        {colorMode === "light" ? <MoonIcon boxSize="1.5em" color="purple.700" /> : <SunIcon boxSize="1.5em" color="yellow.300" />}
-      </Button>
+      <button className="toggle--colorMode" size="sm" onClick={toggleColorMode}>
+        {colorMode === "light" ? <MoonIcon boxSize="1.5em" color="purple.700" /> : <SunIcon boxSize="1.5em"  />}
+      </button>
     </header>
   );
 }

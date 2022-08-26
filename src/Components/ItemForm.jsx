@@ -54,7 +54,7 @@ export default function ProductForm() {
 
   const handleSubmit = (e) => {
     //this will reset the form...
-    // e.preventDefault();
+    e.preventDefault();
 
     // create a new obj with the new form values
     const newItem = {
@@ -165,12 +165,17 @@ export default function ProductForm() {
   const toggleRepurchase = (id) => {
     setItems((oldItems) =>
       oldItems.map((item) => {
-        return item.id === id ? {...item, repurchase: !item.repurchase} : item;
+        return item.id === id
+          ? { ...item, repurchase: !item.repurchase }
+          : item;
       })
     );
   };
 
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const test = () => {
+    alert("TESTING...")
+  }
 
   return (
     <div className="form-container">
@@ -187,13 +192,6 @@ export default function ProductForm() {
             <ModalBody>
               <form onSubmit={handleSubmit}>
                 <FormControl className="product-form">
-                  {submitted ? (
-                    <Alert className="success_msg" status="success">
-                      <AlertIcon />
-                      Sucess! Item has been added!
-                    </Alert>
-                  ) : null}
-
                   <FormLabel>Item:</FormLabel>
                   <Input
                     className="input-field"
@@ -231,6 +229,7 @@ export default function ProductForm() {
                     marginTop="10px"
                     borderRadius="10px"
                     variant="outline"
+                    onClick={test}
                   >
                     Add
                   </Button>
@@ -278,6 +277,12 @@ export default function ProductForm() {
             </Tbody>
           </Table>
         </form>
+        {/* {submitted ? (
+          <Alert className="success_msg" status="success">
+            <AlertIcon />
+            Sucess! Item has been added!
+          </Alert>
+        ) : null} */}
       </TableContainer>
     </div>
   );

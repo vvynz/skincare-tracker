@@ -4,6 +4,7 @@
 
 - List each product's name & expiration date
   - include a date opened
+  - include a date finished???
   - include an expiry date
   - if expiration date is approaching, create a reminder (a month before expiry)
   - add a repurchase option (checkbox?)
@@ -27,3 +28,4 @@
 ## Search function
 
 - Users can look up products
+- include a categories(i.e. cream, sunscreen, serum) section to each item

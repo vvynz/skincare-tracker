@@ -22,6 +22,7 @@ import {
   Tbody,
   Tr,
   Th,
+  Select
 } from "@chakra-ui/react";
 
 import "../Styles/Wishlist.scss";
@@ -167,6 +168,19 @@ export default function WishlistForm() {
                     placeholder="Enter item name..."
                     onChange={setWishlistFormChange}
                   />
+                  <FormLabel>Category:</FormLabel>
+                  <Select placeholder="select option">
+                    <option value="option1">eye cream</option>
+                    <option value="option2">serum</option>
+                    <option value="option3">sunscreen</option>
+                    <option value="option4">toner</option>
+                    <option value="option5">moisturizer</option>
+                    <option value="option6">essence</option>
+                    <option value="option7">make-up remover</option>
+                    <option value="option8">mask</option>
+                    <option value="option9">lip balm</option>
+                    <option value="option10">exfoliator</option>
+                  </Select>
                   <Button
                     type="submit"
                     colorScheme="purple"

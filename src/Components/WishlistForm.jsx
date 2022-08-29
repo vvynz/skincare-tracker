@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Wishlist from "./Wishlist";
 import WishlistEditable from "./WishlistEditable";
-
+import useAppData from "../Hooks/useAppData";
+import { nanoid } from "nanoid";
 import {
   FormControl,
   FormLabel,
@@ -24,7 +25,6 @@ import {
 } from "@chakra-ui/react";
 
 import "../Styles/Wishlist.scss";
-import { nanoid } from "nanoid";
 
 export default function WishlistForm() {
   const [wishlist, setWishlist] = useState(
@@ -41,6 +41,7 @@ export default function WishlistForm() {
   const [editWishListItemID, setEditWishlistItemID] = useState(null);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { generateDate } = useAppData();
 
   useEffect(() => {
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
@@ -71,8 +72,8 @@ export default function WishlistForm() {
     setWishlist(newItems);
     setFormData({
       brand: "",
-      itemName: ""
-    })
+      itemName: "",
+    });
   };
 
   const editWishlistItem = (e, item) => {
@@ -105,12 +106,12 @@ export default function WishlistForm() {
 
     const updWishlistItem = {
       id: editWishListItemID,
-      brand:editFormData.brand,
+      brand: editFormData.brand,
       itemName: editFormData.itemName,
-    }
+    };
 
     const updItems = [...wishlist];
-    const index = updItems.findIndex((item) => item.id === editWishListItemID)
+    const index = updItems.findIndex((item) => item.id === editWishListItemID);
     updItems[index] = updWishlistItem;
 
     setWishlist(updItems);

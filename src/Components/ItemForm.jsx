@@ -176,8 +176,19 @@ export default function ProductForm() {
   };
 
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const test = () => {
-    alert(generateDate());
+  const expiringItems = () => {
+    let d = generateDate();
+    setItems((allItems) =>
+      allItems.map((item) => {
+        let expDay = Number(item.expiryDate.substring(item.expiryDate.length - 2));
+        console.log(expDay)
+        // console.log(daysRemaining)
+        // if (daysRemaining <= 30) {
+          
+        // }
+      })
+    );
+   
   };
 
   return (
@@ -186,7 +197,7 @@ export default function ProductForm() {
         <Button className="add_item_btn" colorScheme="purple" onClick={onOpen}>
           Add Item
         </Button>
-        <Button onClick={test}>alert</Button>
+        <Button onClick={expiringItems}>Notifications</Button>
 
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />

@@ -3,6 +3,7 @@ import { nanoid } from "nanoid";
 
 import InUse from "./InUse";
 import InUseEditable from "./InUseEditable";
+import useAppData from "../Hooks/useAppData";
 
 import {
   FormControl,
@@ -51,6 +52,8 @@ export default function ProductForm() {
   useEffect(() => {
     localStorage.setItem("items", JSON.stringify(items));
   }, [items]);
+
+  const { generateDate } = useAppData();
 
   const handleSubmit = (e) => {
     //this will reset the form...
@@ -174,8 +177,8 @@ export default function ProductForm() {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const test = () => {
-    alert("TESTING...")
-  }
+    alert(generateDate());
+  };
 
   return (
     <div className="form-container">
@@ -183,6 +186,7 @@ export default function ProductForm() {
         <Button className="add_item_btn" colorScheme="purple" onClick={onOpen}>
           Add Item
         </Button>
+        <Button onClick={test}>alert</Button>
 
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
@@ -229,7 +233,6 @@ export default function ProductForm() {
                     marginTop="10px"
                     borderRadius="10px"
                     variant="outline"
-                    onClick={test}
                   >
                     Add
                   </Button>

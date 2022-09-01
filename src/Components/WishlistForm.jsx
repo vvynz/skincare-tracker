@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Wishlist from "./Wishlist";
 import WishlistEditable from "./WishlistEditable";
-import useAppData from "../Hooks/useAppData";
 import { nanoid } from "nanoid";
+
 import {
   FormControl,
   FormLabel,
@@ -42,7 +42,6 @@ export default function WishlistForm() {
   const [editWishListItemID, setEditWishlistItemID] = useState(null);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { generateDate } = useAppData();
 
   useEffect(() => {
     localStorage.setItem("wishlist", JSON.stringify(wishlist));

@@ -184,25 +184,24 @@ export default function ProductForm() {
     const m = Number(today.substring(today.length - 5, today.length - 3));
     let result = [];
 
-    setItems((allItems) =>
-      allItems.map((x) => {
-        const expDay = Number(x.expiryDate.substring(x.expiryDate.length - 2));
+      items.map((item) => {
+        const expDay = Number(item.expiryDate.substring(item.expiryDate.length - 2));
         const month = Number(
-          x.expiryDate.substring(
-            x.expiryDate.length - 5,
-            x.expiryDate.length - 3
+          item.expiryDate.substring(
+            item.expiryDate.length - 5,
+            item.expiryDate.length - 3
           )
         );
-        
+
+        // if the current month matches the item's expiry month
         if (m === month) {
           const daysRemaining = expDay - d;
 
-        if (daysRemaining <= 30) {
-          result.push(x.itemName);
+          if (daysRemaining <= 30) {
+            result.push(item.itemName);
+          }
         }
-        }
-      })
-    );
+      });
 
     return alert(`${result.join(", ")} are expiring soon!`);
   };

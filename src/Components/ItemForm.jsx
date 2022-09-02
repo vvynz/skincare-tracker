@@ -178,19 +178,23 @@ export default function ProductForm() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const expiringItems = () => {
     const today = generateDate();
-    const d = today.substring(today.length - 2)
-    
+    const d = today.substring(today.length - 2);
+    let result = [];
+
     setItems((allItems) =>
-      allItems.map((item) => {
-        const expDay = Number(item.expiryDate.substring(item.expiryDate.length - 2));
+      allItems.map((x) => {
+        const expDay = Number(
+          x.expiryDate.substring(x.expiryDate.length - 2)
+        );
         const daysRemaining = expDay - d;
 
         if (daysRemaining <= 30) {
-          return alert(`${item.itemName} is expiring soon!`)
+          result.push(x.itemName)
         }
       })
     );
-   
+
+    return alert(`${result.join(", ")} are expiring soon!`)
   };
 
   return (

@@ -176,25 +176,35 @@ export default function ProductForm() {
   };
 
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  ///// after alert, the apps crashes.
   const expiringItems = () => {
     const today = generateDate();
-    const d = today.substring(today.length - 2);
+    const d = Number(today.substring(today.length - 2));
+    const m = Number(today.substring(today.length - 5, today.length - 3));
     let result = [];
 
     setItems((allItems) =>
       allItems.map((x) => {
-        const expDay = Number(
-          x.expiryDate.substring(x.expiryDate.length - 2)
+        const expDay = Number(x.expiryDate.substring(x.expiryDate.length - 2));
+        const month = Number(
+          x.expiryDate.substring(
+            x.expiryDate.length - 5,
+            x.expiryDate.length - 3
+          )
         );
-        const daysRemaining = expDay - d;
+        
+        if (m === month) {
+          const daysRemaining = expDay - d;
 
         if (daysRemaining <= 30) {
-          result.push(x.itemName)
+          result.push(x.itemName);
+        }
         }
       })
     );
 
-    return alert(`${result.join(", ")} are expiring soon!`)
+    return alert(`${result.join(", ")} are expiring soon!`);
   };
 
   return (

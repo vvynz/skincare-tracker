@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 import InUse from "./InUse";
 import InUseEditable from "./InUseEditable";
 import useAppData from "../Hooks/useAppData";
-
-import { WarningIcon } from "@chakra-ui/icons";
 
 import {
   FormControl,
@@ -209,9 +207,7 @@ export default function ProductForm() {
   };
 
   const notify = () =>
-    toast(expiringItems(), {
-      icon: <WarningIcon w={6} h={6} color="orange.300" />,
-    });
+    toast.error(expiringItems());
 
   return (
     <div className="form-container">
@@ -220,7 +216,6 @@ export default function ProductForm() {
           Add Item
         </Button>
         <Button onClick={notify}>Notifications</Button>
-        <Toaster />
 
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />

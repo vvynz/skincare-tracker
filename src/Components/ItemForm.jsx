@@ -10,8 +10,6 @@ import {
   FormLabel,
   Input,
   Button,
-  Alert,
-  AlertIcon,
   TableContainer,
   Table,
   TableCaption,
@@ -177,31 +175,32 @@ export default function ProductForm() {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  ///// after alert, the apps crashes.
   const expiringItems = () => {
     const today = generateDate();
     const d = Number(today.substring(today.length - 2));
     const m = Number(today.substring(today.length - 5, today.length - 3));
     let result = [];
 
-      items.map((item) => {
-        const expDay = Number(item.expiryDate.substring(item.expiryDate.length - 2));
-        const month = Number(
-          item.expiryDate.substring(
-            item.expiryDate.length - 5,
-            item.expiryDate.length - 3
-          )
-        );
+    items.map((item) => {
+      const expDay = Number(
+        item.expiryDate.substring(item.expiryDate.length - 2)
+      );
+      const month = Number(
+        item.expiryDate.substring(
+          item.expiryDate.length - 5,
+          item.expiryDate.length - 3
+        )
+      );
 
-        // if the current month matches the item's expiry month
-        if (m === month) {
-          const daysRemaining = expDay - d;
+      // if the current month matches the item's expiry month
+      if (m === month) {
+        const daysRemaining = expDay - d;
 
-          if (daysRemaining <= 30) {
-            result.push(item.itemName);
-          }
+        if (daysRemaining <= 30) {
+          result.push(item.itemName);
         }
-      });
+      }
+    });
 
     return alert(`${result.join(", ")} are expiring soon!`);
   };
@@ -306,12 +305,6 @@ export default function ProductForm() {
             </Tbody>
           </Table>
         </form>
-        {/* {submitted ? (
-          <Alert className="success_msg" status="success">
-            <AlertIcon />
-            Sucess! Item has been added!
-          </Alert>
-        ) : null} */}
       </TableContainer>
     </div>
   );

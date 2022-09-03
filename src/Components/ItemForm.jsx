@@ -206,7 +206,7 @@ export default function ProductForm() {
     return `${result.join(", ")} are expiring soon!`;
   };
 
-  const notify = () => toast("HELLO");
+  const notify = () => toast(expiringItems());
 
   return (
     <div className="form-container">

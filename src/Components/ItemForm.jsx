@@ -6,6 +6,8 @@ import InUse from "./InUse";
 import InUseEditable from "./InUseEditable";
 import useAppData from "../Hooks/useAppData";
 
+import { WarningIcon } from "@chakra-ui/icons";
+
 import {
   FormControl,
   FormLabel,
@@ -206,7 +208,10 @@ export default function ProductForm() {
     return `${result.join(", ")} are expiring soon!`;
   };
 
-  const notify = () => toast(expiringItems());
+  const notify = () =>
+    toast(expiringItems(), {
+      icon: <WarningIcon w={6} h={6} color="orange.300" />,
+    });
 
   return (
     <div className="form-container">

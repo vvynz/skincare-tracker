@@ -14,12 +14,15 @@ function App() {
       <Toaster 
       toastOptions={{
         error: {
-          icon: <WarningIcon w={6} h={6} color="orange.300" />,
+          icon: <WarningIcon w={8} h={8} color="purple.200" />,
           duration: 5000,
           style: {
-            border: "1px solid white",
-            // background: "#ddbbff",
-            color: "black"
+            // border: "1px solid white",
+            borderRadius: "10px",
+            // background: "#333",
+            color: "#333",
+            fontSize: "16px",
+            marginTop: "20px"
           }
         }
       }}

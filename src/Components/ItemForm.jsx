@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
+import toast, { Toaster } from "react-hot-toast";
 
 import InUse from "./InUse";
 import InUseEditable from "./InUseEditable";
@@ -202,8 +203,10 @@ export default function ProductForm() {
       }
     });
 
-    return alert(`${result.join(", ")} are expiring soon!`);
+    return `${result.join(", ")} are expiring soon!`;
   };
+
+  const notify = () => toast("HELLO");
 
   return (
     <div className="form-container">
@@ -211,7 +214,8 @@ export default function ProductForm() {
         <Button className="add_item_btn" colorScheme="purple" onClick={onOpen}>
           Add Item
         </Button>
-        <Button onClick={expiringItems}>Notifications</Button>
+        <Button onClick={notify}>Notifications</Button>
+        <Toaster />
 
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />

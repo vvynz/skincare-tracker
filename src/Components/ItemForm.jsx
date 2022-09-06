@@ -210,6 +210,8 @@ export default function ProductForm() {
 
     return result.length === 1
       ? `${result.join(" ")} is expiring soon!`
+      : result.length === 0
+      ? "No notifications at this time"
       : `${result.join(", ")} are expiring soon!`;
   };
 

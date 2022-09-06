@@ -203,7 +203,7 @@ export default function ProductForm() {
       }
     });
 
-    return `${result.join(", ")} are expiring soon!`;
+    return result.length === 1? `${result.join(" ")} is expiring soon!` : `${result.join(", ")} are expiring soon!`;
   };
 
   const notify = () =>

@@ -34,12 +34,14 @@ export default function ProductForm() {
     () => JSON.parse(localStorage.getItem("items")) || []
   );
   const [formData, setFormData] = useState({
+    brand: "",
     itemName: "",
     dateOpened: "",
     expiryDate: "",
     repurchase: false,
   });
   const [editFormData, setEditFormData] = useState({
+    brand: "",
     itemName: "",
     dateOpened: "",
     expiryDate: "",
@@ -61,6 +63,7 @@ export default function ProductForm() {
     // create a new obj with the new form values
     const newItem = {
       id: nanoid(),
+      brand: formData.brand,
       itemName: formData.itemName,
       dateOpened: formData.dateOpened,
       expiryDate: formData.expiryDate,
@@ -102,6 +105,7 @@ export default function ProductForm() {
 
     //create a new obj with the selected item's form values
     const formValues = {
+      brand: item.brand,
       itemName: item.itemName,
       dateOpened: item.dateOpened,
       expiryDate: item.expiryDate,
@@ -128,6 +132,7 @@ export default function ProductForm() {
     // create a new obj with the new form values during editing
     const editedItem = {
       id: editItemID,
+      brand: editFormData.brand,
       itemName: editFormData.itemName,
       dateOpened: editFormData.dateOpened,
       expiryDate: editFormData.expiryDate,
@@ -203,11 +208,12 @@ export default function ProductForm() {
       }
     });
 
-    return result.length === 1? `${result.join(" ")} is expiring soon!` : `${result.join(", ")} are expiring soon!`;
+    return result.length === 1
+      ? `${result.join(" ")} is expiring soon!`
+      : `${result.join(", ")} are expiring soon!`;
   };
 
-  const notify = () =>
-    toast.error(expiringItems());
+  const notify = () => toast.error(expiringItems());
 
   return (
     <div className="form-container">
@@ -225,6 +231,15 @@ export default function ProductForm() {
             <ModalBody>
               <form onSubmit={handleSubmit}>
                 <FormControl className="product-form">
+                  <FormLabel>Brand:</FormLabel>
+                  <Input
+                    className="input-field"
+                    value={formData.brand}
+                    onChange={setFormChange}
+                    placeholder="Brand"
+                    name="brand"
+                  />
+
                   <FormLabel>Item:</FormLabel>
                   <Input
                     className="input-field"

@@ -293,6 +293,7 @@ export default function ProductForm() {
             <TableCaption>Current Items in Use:</TableCaption>
             <Thead>
               <Tr>
+                <Th>Brand:</Th>
                 <Th>Item:</Th>
                 <Th>Date Opened:</Th>
                 <Th>Expiry Date:</Th>

@@ -4,6 +4,9 @@ export default function InUseEditable({ editFormData, handleEditFormChange, canc
   return (
     <Tr>
       <Th>
+        <Input name="brand" value={editFormData.brand} onChange={handleEditFormChange} />
+      </Th>
+      <Th>
         <Input name="itemName" value={editFormData.itemName} required="required" onChange={handleEditFormChange} />
       </Th>
       <Th>

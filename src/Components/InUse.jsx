@@ -5,6 +5,7 @@ export default function InUse({ item, editItem, deleteItem, toggleRepurchase }) 
 
   return (
     <Tr>
+      <Th>{item.brand}</Th>
       <Th>{item.itemName}</Th>
       <Th>{item.dateOpened}</Th>
       <Th>{item.expiryDate}</Th>

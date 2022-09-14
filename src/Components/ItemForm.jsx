@@ -48,7 +48,7 @@ export default function ProductForm() {
     repurchase: false,
   });
   const [editItemID, setEditItemID] = useState(null);
-  const [submitted, setSubmitted] = useState(false);
+  const [submitted, setSubmitted] = useState(false); ///// REMOVE LATER
 
   useEffect(() => {
     localStorage.setItem("items", JSON.stringify(items));
@@ -210,9 +210,9 @@ export default function ProductForm() {
 
     return result.length === 1
       ? `${result.join(" ")} is expiring soon!`
-      : result.length === 0
-      ? "No notifications at this time"
-      : `${result.join(", ")} are expiring soon!`;
+      : result.length > 1
+      ? `${result.join(", ")} are expiring soon!`
+      : "No notifications at this time";
   };
 
   const notify = () => toast.error(expiringItems());
@@ -223,7 +223,9 @@ export default function ProductForm() {
         <Button className="add_item_btn" colorScheme="purple" onClick={onOpen}>
           Add Item
         </Button>
-        <Button onClick={notify}>Notifications</Button>
+        <Button onClick={notify} colorScheme="purple">
+          Notifications
+        </Button>
 
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />

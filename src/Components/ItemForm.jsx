@@ -29,30 +29,17 @@ import {
 
 import "../Styles/ItemForm.scss";
 
-export default function ProductForm() {
-  const [items, setItems] = useState(
-    () => JSON.parse(localStorage.getItem("items")) || []
-  );
-  const [formData, setFormData] = useState({
-    brand: "",
-    itemName: "",
-    dateOpened: "",
-    expiryDate: "",
-    repurchase: false,
-  });
-  const [editFormData, setEditFormData] = useState({
-    brand: "",
-    itemName: "",
-    dateOpened: "",
-    expiryDate: "",
-    repurchase: false,
-  });
-  const [editItemID, setEditItemID] = useState(null);
+export default function ItemForm({
+  items,
+  setItems,
+  formData,
+  setFormData,
+  editFormData,
+  setEditFormData,
+  editItemID,
+  setEditItemID,
+}) {
   const [submitted, setSubmitted] = useState(false); ///// REMOVE LATER
-
-  useEffect(() => {
-    localStorage.setItem("items", JSON.stringify(items));
-  }, [items]);
 
   const { generateDate } = useAppData();
 

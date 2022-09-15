@@ -41,6 +41,8 @@ function App() {
     brand: "",
     itemName: "",
   });
+  const [keyword, setKeyword] = useState("");
+  const [results, setResults] = useState(null);
 
   useEffect(() => {
     localStorage.setItem("items", JSON.stringify(items));
@@ -65,15 +67,15 @@ function App() {
           },
         }}
       />
-      <NavBar items={items} />
-      <Tabs className="tabs" isFitted variant="enclosed" colorScheme="purple">
+      <NavBar items={items} keyword={keyword} setKeyword={setKeyword} setResults={setResults} />
+      <Tabs className="tabs" isFitted variant="enclosed" colorScheme="purple" >
         <TabList>
           <Tab>Dashboard</Tab>
           <Tab>Currently In Use</Tab>
           <Tab>Wishlist</Tab>
         </TabList>
         <TabPanels>
-          <TabPanel>HELLO</TabPanel>
+          <TabPanel>{results}</TabPanel>
           <TabPanel>
             <ItemForm
               items={items}

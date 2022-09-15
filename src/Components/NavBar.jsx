@@ -9,10 +9,7 @@ import logo_col from "../Assets/skincare.png";
 import useAppData from "../Hooks/useAppData";
 import "../Styles/NavBar.scss";
 
-export default function NavBar({ items }) {
-  const [keyword, setKeyword] = useState("");
-  const [results, setResults] = useState(null);
-
+export default function NavBar({ items, keyword, setKeyword, setResults }) {
   const { colorMode, toggleColorMode } = useColorMode();
   const { search } = useAppData();
 
@@ -24,7 +21,7 @@ export default function NavBar({ items }) {
     e.preventDefault();
     setResults(search(items, keyword));
   };
-  console.log(results);
+  // console.log(results);
   return (
     <header>
       <nav className="navbar">

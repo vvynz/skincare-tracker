@@ -27,10 +27,12 @@ import {
 
 import "../Styles/Wishlist.scss";
 
-export default function WishlistForm() {
-  const [wishlist, setWishlist] = useState(
-    () => JSON.parse(localStorage.getItem("wishlist")) || []
-  );
+export default function WishlistForm({
+  wishlist,
+  setWishlist,
+  editItemID,
+  setEditItemID,
+}) {
   const [formData, setFormData] = useState({
     brand: "",
     itemName: "",
@@ -39,13 +41,12 @@ export default function WishlistForm() {
     brand: "",
     itemName: "",
   });
-  const [editWishListItemID, setEditWishlistItemID] = useState(null);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  useEffect(() => {
-    localStorage.setItem("wishlist", JSON.stringify(wishlist));
-  }, [wishlist]);
+  // useEffect(() => {
+    
+  // }, [wishlist]);
 
   const setWishlistFormChange = (e) => {
     e.preventDefault();
@@ -78,7 +79,7 @@ export default function WishlistForm() {
 
   const editWishlistItem = (e, item) => {
     e.preventDefault();
-    setEditWishlistItemID(item.id);
+    setEditItemID(item.id);
 
     const formData = {
       brand: item.brand,
@@ -102,20 +103,20 @@ export default function WishlistForm() {
   const handleWishlistEditFormSubmit = (e) => {
     e.preventDefault();
 
-    console.log(editWishListItemID);
+    console.log(editItemID);
 
     const updWishlistItem = {
-      id: editWishListItemID,
+      id: editItemID,
       brand: editFormData.brand,
       itemName: editFormData.itemName,
     };
 
     const updItems = [...wishlist];
-    const index = updItems.findIndex((item) => item.id === editWishListItemID);
+    const index = updItems.findIndex((item) => item.id === editItemID);
     updItems[index] = updWishlistItem;
 
     setWishlist(updItems);
-    setEditWishlistItemID(null);
+    setEditItemID(null);
   };
 
   const deleteItem = (id) => {
@@ -129,7 +130,7 @@ export default function WishlistForm() {
   };
 
   const cancel = () => {
-    setEditWishlistItemID(null);
+    setEditItemID(null);
   };
 
   return (
@@ -212,7 +213,7 @@ export default function WishlistForm() {
               {/* <WishlistEditable /> */}
               {wishlist.map((item) => (
                 <>
-                  {editWishListItemID === item.id ? (
+                  {editItemID === item.id ? (
                     <WishlistEditable
                       key={item.id}
                       editFormData={editFormData}

@@ -30,9 +30,14 @@ function App() {
   });
   const [editItemID, setEditItemID] = useState(null);
 
+  const [wishlist, setWishlist] = useState(
+    () => JSON.parse(localStorage.getItem("wishlist")) || []
+  );
+
   useEffect(() => {
     localStorage.setItem("items", JSON.stringify(items));
-  }, [items]);
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+  }, [items, wishlist]);
 
   return (
     <div className="App">
@@ -72,7 +77,12 @@ function App() {
             />
           </TabPanel>
           <TabPanel>
-            <WishlistForm />
+            <WishlistForm
+              wishlist={wishlist}
+              setWishlist={setWishlist}
+              editItemID={editItemID}
+              setEditItemID={setEditItemID}
+            />
           </TabPanel>
         </TabPanels>
       </Tabs>

@@ -20,5 +20,21 @@ export default function useAppData() {
   };
   appData.getDaysInMonth = getDaysInMonth;
 
+  const search = (state, term) => {
+    term = term.toLowerCase();
+    let output = [];
+
+    for (let i of state) {
+      if (
+        i.brand.toLowerCase().includes(term) ||
+        i.itemName.toLowerCase().includes(term)
+      ) {
+        output.push(i);
+      }
+    }
+    return output;
+  };
+  appData.search = search;
+
   return appData;
 }

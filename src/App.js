@@ -65,7 +65,7 @@ function App() {
           },
         }}
       />
-      <NavBar />
+      <NavBar items={items} />
       <Tabs className="tabs" variant="enclosed" colorScheme="purple">
         <TabList>
           <Tab>Currently In Use</Tab>

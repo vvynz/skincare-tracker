@@ -15,6 +15,17 @@ export default function NavBar({items}) {
 
   const { colorMode, toggleColorMode } = useColorMode();
   const { search } = useAppData();
+
+  const handleKeyword = (e) => {
+    // console.log(e.target.value)
+    setKeyword(e.target.value)
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setResults(search(items, keyword))
+  }
+  // console.log(results)
   return (
     <header>
       <nav className="navbar">
@@ -22,8 +33,8 @@ export default function NavBar({items}) {
         <Heading>skincare tracker.</Heading>
       </nav>
       <div>
-        <Input className="search_bar" width="auto" placeholder="Search..." />
-        <Button>Search</Button>
+        <Input className="search_bar" width="auto" placeholder="Search..." onChange={handleKeyword} />
+        <Button onClick={handleSubmit}>Search</Button>
         <button className="toggle--colorMode" onClick={toggleColorMode}>
           {colorMode === "light" ? (
             <MoonIcon boxSize="1.5em" color="purple.700" />

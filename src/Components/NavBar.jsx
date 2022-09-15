@@ -9,7 +9,7 @@ import logo_col from "../Assets/skincare.png";
 import useAppData from "../Hooks/useAppData";
 import "../Styles/NavBar.scss";
 
-export default function NavBar({items}) {
+export default function NavBar({ items }) {
   const [keyword, setKeyword] = useState("");
   const [results, setResults] = useState(null);
 
@@ -17,15 +17,14 @@ export default function NavBar({items}) {
   const { search } = useAppData();
 
   const handleKeyword = (e) => {
-    // console.log(e.target.value)
-    setKeyword(e.target.value)
+    setKeyword(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setResults(search(items, keyword))
-  }
-  // console.log(results)
+    setResults(search(items, keyword));
+  };
+  console.log(results);
   return (
     <header>
       <nav className="navbar">
@@ -33,7 +32,12 @@ export default function NavBar({items}) {
         <Heading>skincare tracker.</Heading>
       </nav>
       <div>
-        <Input className="search_bar" width="auto" placeholder="Search..." onChange={handleKeyword} />
+        <Input
+          className="search_bar"
+          width="auto"
+          placeholder="Search..."
+          onChange={handleKeyword}
+        />
         <Button onClick={handleSubmit}>Search</Button>
         <button className="toggle--colorMode" onClick={toggleColorMode}>
           {colorMode === "light" ? (

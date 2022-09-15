@@ -66,12 +66,14 @@ function App() {
         }}
       />
       <NavBar items={items} />
-      <Tabs className="tabs" variant="enclosed" colorScheme="purple">
+      <Tabs className="tabs" isFitted variant="enclosed" colorScheme="purple">
         <TabList>
+          <Tab>Dashboard</Tab>
           <Tab>Currently In Use</Tab>
           <Tab>Wishlist</Tab>
         </TabList>
         <TabPanels>
+          <TabPanel>HELLO</TabPanel>
           <TabPanel>
             <ItemForm
               items={items}

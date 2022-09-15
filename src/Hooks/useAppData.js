@@ -15,5 +15,10 @@ export default function useAppData() {
   };
   appData.generateDate = generateDate;
 
+  const getDaysInMonth = (year, month) => {
+    return new Date(year, month, 0).getDate();
+  };
+  appData.getDaysInMonth = getDaysInMonth;
+
   return appData;
 }

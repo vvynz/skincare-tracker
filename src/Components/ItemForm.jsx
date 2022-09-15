@@ -41,7 +41,7 @@ export default function ItemForm({
 }) {
   const [submitted, setSubmitted] = useState(false); ///// REMOVE LATER
 
-  const { generateDate } = useAppData();
+  const { generateDate, getDaysInMonth } = useAppData();
 
   const handleSubmit = (e) => {
     //this will reset the form...
@@ -173,6 +173,10 @@ export default function ItemForm({
     const d = Number(today.substring(today.length - 2));
     const m = Number(today.substring(today.length - 5, today.length - 3));
     const y = Number(today.substring(0, 4));
+    let daysInCurrentMonth = getDaysInMonth(y, m, 0);
+    let daysInNextMonth = getDaysInMonth(y, m+1, 0);
+    
+    // console.log(daysInNextMonth)
 
     let result = [];
 
@@ -192,11 +196,14 @@ export default function ItemForm({
       let daysRemaining;
 
       if (y === year && m === month) {
+        //calculate the num of items expiring this month
         daysRemaining = expDay - d;
       } else if (y === year && m !== month) {
-        // if a prob expires in 3 weeks, it doesn't give an accurate num of days remaining
-        daysRemaining = d - expDay;
-        // console.log("days remaining between sept & oct", daysRemaining)
+        // calculate the num of items expiring within the next month
+        let daysLeftInCurrentMon = daysInCurrentMonth - d;
+        
+        daysRemaining = daysLeftInCurrentMon + expDay;
+        console.log(daysRemaining)
       }
 
       return daysRemaining <= 30 ? result.push(item.itemName) : null;

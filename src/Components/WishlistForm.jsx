@@ -44,10 +44,6 @@ export default function WishlistForm({
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  // useEffect(() => {
-    
-  // }, [wishlist]);
-
   const setWishlistFormChange = (e) => {
     e.preventDefault();
 
@@ -102,8 +98,6 @@ export default function WishlistForm({
 
   const handleWishlistEditFormSubmit = (e) => {
     e.preventDefault();
-
-    console.log(editItemID);
 
     const updWishlistItem = {
       id: editItemID,
@@ -210,7 +204,6 @@ export default function WishlistForm({
               </Tr>
             </Thead>
             <Tbody>
-              {/* <WishlistEditable /> */}
               {wishlist.map((item) => (
                 <>
                   {editItemID === item.id ? (

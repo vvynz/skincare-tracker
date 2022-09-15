@@ -32,15 +32,11 @@ export default function WishlistForm({
   setWishlist,
   editItemID,
   setEditItemID,
+  wishlistFormData,
+  setWishlistFormData,
+  editWishlistFormData,
+  setEditWishlistFormData
 }) {
-  const [formData, setFormData] = useState({
-    brand: "",
-    itemName: "",
-  });
-  const [editFormData, setEditFormData] = useState({
-    brand: "",
-    itemName: "",
-  });
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -49,10 +45,10 @@ export default function WishlistForm({
 
     const { name, value } = e.target;
 
-    const newData = { ...formData };
+    const newData = { ...wishlistFormData };
     newData[name] = value;
 
-    setFormData(newData);
+    setWishlistFormData(newData);
   };
 
   const handleSubmit = (e) => {
@@ -60,14 +56,14 @@ export default function WishlistForm({
 
     const newWishlistItem = {
       id: nanoid(),
-      brand: formData.brand,
-      itemName: formData.itemName,
+      brand: wishlistFormData.brand,
+      itemName: wishlistFormData.itemName,
     };
 
     const newItems = [...wishlist, newWishlistItem];
 
     setWishlist(newItems);
-    setFormData({
+    setWishlistFormData({
       brand: "",
       itemName: "",
     });
@@ -82,7 +78,7 @@ export default function WishlistForm({
       itemName: item.itemName,
     };
 
-    setEditFormData(formData);
+    setEditWishlistFormData(formData);
   };
 
   const handleWishlistEditFormChange = (e) => {
@@ -90,10 +86,10 @@ export default function WishlistForm({
 
     const { name, value } = e.target;
 
-    const updData = { ...editFormData };
+    const updData = { ...editWishlistFormData };
     updData[name] = value;
 
-    setEditFormData(updData);
+    setEditWishlistFormData(updData);
   };
 
   const handleWishlistEditFormSubmit = (e) => {
@@ -101,8 +97,8 @@ export default function WishlistForm({
 
     const updWishlistItem = {
       id: editItemID,
-      brand: editFormData.brand,
-      itemName: editFormData.itemName,
+      brand: editWishlistFormData.brand,
+      itemName: editWishlistFormData.itemName,
     };
 
     const updItems = [...wishlist];
@@ -146,7 +142,7 @@ export default function WishlistForm({
                   <Input
                     className="input_field"
                     name="brand"
-                    value={formData.brand}
+                    value={wishlistFormData.brand}
                     type="text"
                     required="required"
                     placeholder="Enter a brand name..."
@@ -156,7 +152,7 @@ export default function WishlistForm({
                   <Input
                     className="input_field"
                     name="itemName"
-                    value={formData.itemName}
+                    value={wishlistFormData.itemName}
                     type="text"
                     required="required"
                     placeholder="Enter item name..."
@@ -209,7 +205,7 @@ export default function WishlistForm({
                   {editItemID === item.id ? (
                     <WishlistEditable
                       key={item.id}
-                      editFormData={editFormData}
+                      editWishlistFormData={editWishlistFormData}
                       handleWishlistEditFormChange={
                         handleWishlistEditFormChange
                       }

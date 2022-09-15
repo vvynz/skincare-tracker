@@ -33,6 +33,14 @@ function App() {
   const [wishlist, setWishlist] = useState(
     () => JSON.parse(localStorage.getItem("wishlist")) || []
   );
+  const [wishlistFormData, setWishlistFormData] = useState({
+    brand: "",
+    itemName: "",
+  });
+  const [editWishlistFormData, setEditWishlistFormData] = useState({
+    brand: "",
+    itemName: "",
+  });
 
   useEffect(() => {
     localStorage.setItem("items", JSON.stringify(items));
@@ -80,6 +88,10 @@ function App() {
             <WishlistForm
               wishlist={wishlist}
               setWishlist={setWishlist}
+              wishlistFormData={wishlistFormData}
+              setWishlistFormData={setWishlistFormData}
+              editWishlistFormData={editWishlistFormData}
+              setEditWishlistFormData={setEditWishlistFormData}
               editItemID={editItemID}
               setEditItemID={setEditItemID}
             />

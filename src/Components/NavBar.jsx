@@ -10,8 +10,10 @@ import useAppData from "../Hooks/useAppData";
 import "../Styles/NavBar.scss";
 
 export default function NavBar({items}) {
-  const { colorMode, toggleColorMode } = useColorMode();
+  const [keyword, setKeyword] = useState("");
+  const [results, setResults] = useState(null);
 
+  const { colorMode, toggleColorMode } = useColorMode();
   const { search } = useAppData();
   return (
     <header>
@@ -21,7 +23,7 @@ export default function NavBar({items}) {
       </nav>
       <div>
         <Input className="search_bar" width="auto" placeholder="Search..." />
-        <Button onClick={console.log(search(items, "cleanser"))}>Search</Button>
+        <Button>Search</Button>
         <button className="toggle--colorMode" onClick={toggleColorMode}>
           {colorMode === "light" ? (
             <MoonIcon boxSize="1.5em" color="purple.700" />

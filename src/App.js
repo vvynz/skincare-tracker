@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import NavBar from "./Components/NavBar";
 import ItemForm from "./Components/ItemForm";
 import WishlistForm from "./Components/WishlistForm";
+import SearchResults from "./Components/SearchResults";
 
 import { Tab, Tabs, TabList, TabPanel, TabPanels } from "@chakra-ui/react";
 import { WarningIcon } from "@chakra-ui/icons";
@@ -42,7 +43,8 @@ function App() {
     itemName: "",
   });
   const [keyword, setKeyword] = useState("");
-  const [results, setResults] = useState(null);
+  const [results, setResults] = useState([]);
+  console.log(results)
 
   useEffect(() => {
     localStorage.setItem("items", JSON.stringify(items));
@@ -68,14 +70,16 @@ function App() {
         }}
       />
       <NavBar items={items} keyword={keyword} setKeyword={setKeyword} setResults={setResults} />
-      <Tabs className="tabs" isFitted variant="enclosed" colorScheme="purple" >
+      <Tabs className="tabs" isFitted variant="enclosed" colorScheme="purple" defaultIndex={0}>
         <TabList>
           <Tab>Dashboard</Tab>
           <Tab>Currently In Use</Tab>
           <Tab>Wishlist</Tab>
         </TabList>
         <TabPanels>
-          <TabPanel>{results}</TabPanel>
+          <TabPanel>
+            <SearchResults results={results} />
+          </TabPanel>
           <TabPanel>
             <ItemForm
               items={items}

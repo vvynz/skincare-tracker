@@ -174,10 +174,7 @@ export default function ItemForm({
     const m = Number(today.substring(today.length - 5, today.length - 3));
     const y = Number(today.substring(0, 4));
     let daysInCurrentMonth = getDaysInMonth(y, m, 0);
-    let daysInNextMonth = getDaysInMonth(y, m+1, 0);
     
-    // console.log(daysInNextMonth)
-
     let result = [];
 
     items.map((item) => {
@@ -199,11 +196,10 @@ export default function ItemForm({
         //calculate the num of items expiring this month
         daysRemaining = expDay - d;
       } else if (y === year && m !== month) {
-        // calculate the num of items expiring within the next month
+        // calculate the num of items expiring if their expiry date is within the next month
         let daysLeftInCurrentMon = daysInCurrentMonth - d;
         
         daysRemaining = daysLeftInCurrentMon + expDay;
-        console.log(daysRemaining)
       }
 
       return daysRemaining <= 30 ? result.push(item.itemName) : null;

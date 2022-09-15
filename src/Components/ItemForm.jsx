@@ -172,6 +172,8 @@ export default function ItemForm({
     const today = generateDate();
     const d = Number(today.substring(today.length - 2));
     const m = Number(today.substring(today.length - 5, today.length - 3));
+    const y = Number(today.substring(0, 4));
+
     let result = [];
 
     items.map((item) => {
@@ -184,15 +186,20 @@ export default function ItemForm({
           item.expiryDate.length - 3
         )
       );
+      const year = Number(item.expiryDate.substring(0, 4));
 
       // if the current month matches the item's expiry month
-      if (m === month) {
-        const daysRemaining = expDay - d;
+      let daysRemaining;
 
-        if (daysRemaining <= 30) {
-          result.push(item.itemName);
-        }
+      if (y === year && m === month) {
+        daysRemaining = expDay - d;
+      } else if (y === year && m !== month) {
+        // if a prob expires in 3 weeks, it doesn't give an accurate num of days remaining
+        daysRemaining = d - expDay;
+        // console.log("days remaining between sept & oct", daysRemaining)
       }
+
+      return daysRemaining <= 30 ? result.push(item.itemName) : null;
     });
 
     return result.length === 1

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { nanoid } from "nanoid";
 import toast from "react-hot-toast";
 
@@ -39,8 +39,6 @@ export default function ItemForm({
   editItemID,
   setEditItemID,
 }) {
-  const [submitted, setSubmitted] = useState(false); ///// REMOVE LATER
-
   const { generateDate, getDaysInMonth } = useAppData();
 
   const handleSubmit = (e) => {
@@ -61,7 +59,6 @@ export default function ItemForm({
     const newItems = [...items, newItem];
     // set the new items array to state
     setItems(newItems);
-    setSubmitted(true);
 
     // ONLY ITEMNAME WILL CLEAR
     // setFormData({

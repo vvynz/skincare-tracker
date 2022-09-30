@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Wishlist from "./Wishlist";
 import WishlistEditable from "./WishlistEditable";
 import { nanoid } from "nanoid";

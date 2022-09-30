@@ -124,8 +124,8 @@ export default function WishlistForm({
   };
 
   return (
-    <section className="wishlist">
-      <nav>
+    <section className="wishlist-container">
+      <nav className="side-nav">
         <Button colorScheme="purple" onClick={onOpen}>
           Add Item
         </Button>

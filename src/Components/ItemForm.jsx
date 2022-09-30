@@ -217,10 +217,10 @@ export default function ItemForm({
   return (
     <div className="form-container">
       <nav className="side-nav">
-        <Button className="add_item_btn" colorScheme="purple" onClick={onOpen}>
+        <Button className="add_item_btn" colorScheme="purple" size="sm" onClick={onOpen}>
           Add Item
         </Button>
-        <Button onClick={notify} colorScheme="purple">
+        <Button onClick={notify} colorScheme="purple" size="sm">
           Notifications
         </Button>
 

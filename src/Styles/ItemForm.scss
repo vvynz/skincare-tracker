@@ -1,7 +1,7 @@
 .form-container {
   // border: 1px solid white;
-  margin: 0 auto;
-  display: flex;
+  // margin: 0 auto;
+  // display: flex;
   // should update with media queries
   max-width: 100rem;
 }
@@ -29,8 +29,8 @@
   // margin: 0px 20px;
 }
 
-.table_container th:last-child button {
-  margin-right: 10px;
+.table_container td:last-child button {
+  margin-right: 0.75em;
 }
 
 .repurchase-label {
@@ -43,4 +43,10 @@
   display: flex;
   flex-direction: column;
   padding: 0.5em;
+}
+
+@media (min-width: 40em) {
+  .form-container {
+    display: flex;
+  }
 }

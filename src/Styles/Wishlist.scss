@@ -8,8 +8,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 20px;
-  margin-bottom: 20px;
+  padding: 1.25em;
+  margin-bottom: 1.5em;
 }
 
 .input_field {
@@ -18,4 +18,10 @@
 
 .categories {
   margin-bottom: 10px;
+}
+
+@media (min-width: 40em) {
+  .wishlist-container {
+    display: flex;
+  }
 }

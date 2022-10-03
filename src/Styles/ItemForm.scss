@@ -1,6 +1,10 @@
 .form-container {
   // border: 1px solid white;
   max-width: 100rem;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: auto;
+  grid-template-areas: "sidebar main main main";
 }
 
 .product-form {
@@ -20,8 +24,13 @@
   margin-bottom: 1em;
 }
 
+.side-nav {
+  grid-area: sidebar;
+}
+
 .table_container {
   border: 1px solid white;
+  grid-area: main;
 }
 
 .table_container td:last-child button {

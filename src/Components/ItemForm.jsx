@@ -171,7 +171,7 @@ export default function ItemForm({
     const m = Number(today.substring(today.length - 5, today.length - 3));
     const y = Number(today.substring(0, 4));
     let daysInCurrentMonth = getDaysInMonth(y, m, 0);
-    
+
     let result = [];
 
     items.map((item) => {
@@ -195,7 +195,7 @@ export default function ItemForm({
       } else if (y === year && m !== month) {
         // calculate the num of items expiring if their expiry date is within the next month
         let daysLeftInCurrentMon = daysInCurrentMonth - d;
-        
+
         daysRemaining = daysLeftInCurrentMon + expDay;
       }
 
@@ -212,118 +212,125 @@ export default function ItemForm({
   const notify = () => toast.error(expiringItems());
 
   return (
-    <div className="form-container">
-      <nav className="side-nav">
-        <Button className="add_item_btn" colorScheme="purple" size="sm" onClick={onOpen}>
-          Add Item
-        </Button>
-        <Button onClick={notify} colorScheme="purple" size="sm">
-          Notifications
-        </Button>
+    <div className="wrapper">
+      <main className="form-container">
+        <nav className="side-nav">
+          <Button
+            className="add_item_btn"
+            colorScheme="purple"
+            size="sm"
+            onClick={onOpen}
+          >
+            Add Item
+          </Button>
+          <Button onClick={notify} colorScheme="purple" size="sm">
+            Notifications
+          </Button>
 
-        <Modal isOpen={isOpen} onClose={onClose}>
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>Add Item Currently In Use:</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody>
-              <form onSubmit={handleSubmit}>
-                <FormControl className="product-form">
-                  <FormLabel>Brand:</FormLabel>
-                  <Input
-                    className="input-field"
-                    value={formData.brand}
-                    onChange={setFormChange}
-                    placeholder="Brand"
-                    name="brand"
-                  />
-
-                  <FormLabel>Item:</FormLabel>
-                  <Input
-                    className="input-field"
-                    value={formData.itemName}
-                    required="required"
-                    onChange={setFormChange}
-                    placeholder="Item name"
-                    name="itemName"
-                  />
-
-                  <FormLabel>Date opened:</FormLabel>
-                  <Input
-                    className="input-field"
-                    value={formData.dateOpened.toLocaleDateString}
-                    required="required"
-                    onInput={setFormChange}
-                    type="date"
-                    name="dateOpened"
-                  />
-
-                  <FormLabel>Expiry date:</FormLabel>
-                  <Input
-                    className="input-field"
-                    value={formData.expiryDate.toLocaleDateString}
-                    required="required"
-                    onInput={setFormChange}
-                    type="date"
-                    name="expiryDate"
-                  />
-
-                  <Button
-                    type="submit"
-                    colorScheme="purple"
-                    size="md"
-                    marginTop="10px"
-                    borderRadius="10px"
-                    variant="outline"
-                  >
-                    Add
-                  </Button>
-                </FormControl>
-              </form>
-            </ModalBody>
-          </ModalContent>
-        </Modal>
-      </nav>
-
-      <TableContainer className="table_container">
-        <form onSubmit={handleEditFormSubmit}>
-          <Table>
-            <TableCaption>Current Items in Use:</TableCaption>
-            <Thead>
-              <Tr>
-                <Th>Brand:</Th>
-                <Th>Item:</Th>
-                <Th>Date Opened:</Th>
-                <Th>Expiry Date:</Th>
-                <Th>Repurchase?</Th>
-                <Th>Actions</Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              {items.map((item) => (
-                <>
-                  {editItemID === item.id ? (
-                    <InUseEditable
-                      key={item.id}
-                      editFormData={editFormData}
-                      handleEditFormChange={handleEditFormChange}
-                      cancel={cancel}
+          <Modal isOpen={isOpen} onClose={onClose}>
+            <ModalOverlay />
+            <ModalContent>
+              <ModalHeader>Add Item Currently In Use:</ModalHeader>
+              <ModalCloseButton />
+              <ModalBody>
+                <form onSubmit={handleSubmit}>
+                  <FormControl className="product-form">
+                    <FormLabel>Brand:</FormLabel>
+                    <Input
+                      className="input-field"
+                      value={formData.brand}
+                      onChange={setFormChange}
+                      placeholder="Brand"
+                      name="brand"
                     />
-                  ) : (
-                    <InUse
-                      key={item.id}
-                      item={item}
-                      toggleRepurchase={() => toggleRepurchase(item.id)}
-                      editItem={editItem}
-                      deleteItem={deleteItem}
+
+                    <FormLabel>Item:</FormLabel>
+                    <Input
+                      className="input-field"
+                      value={formData.itemName}
+                      required="required"
+                      onChange={setFormChange}
+                      placeholder="Item name"
+                      name="itemName"
                     />
-                  )}
-                </>
-              ))}
-            </Tbody>
-          </Table>
-        </form>
-      </TableContainer>
+
+                    <FormLabel>Date opened:</FormLabel>
+                    <Input
+                      className="input-field"
+                      value={formData.dateOpened.toLocaleDateString}
+                      required="required"
+                      onInput={setFormChange}
+                      type="date"
+                      name="dateOpened"
+                    />
+
+                    <FormLabel>Expiry date:</FormLabel>
+                    <Input
+                      className="input-field"
+                      value={formData.expiryDate.toLocaleDateString}
+                      required="required"
+                      onInput={setFormChange}
+                      type="date"
+                      name="expiryDate"
+                    />
+
+                    <Button
+                      type="submit"
+                      colorScheme="purple"
+                      size="md"
+                      marginTop="10px"
+                      borderRadius="10px"
+                      variant="outline"
+                    >
+                      Add
+                    </Button>
+                  </FormControl>
+                </form>
+              </ModalBody>
+            </ModalContent>
+          </Modal>
+        </nav>
+
+        <TableContainer className="table_container">
+          <form onSubmit={handleEditFormSubmit}>
+            <Table>
+              <TableCaption>Current Items in Use:</TableCaption>
+              <Thead>
+                <Tr>
+                  <Th>Brand:</Th>
+                  <Th>Item:</Th>
+                  <Th>Date Opened:</Th>
+                  <Th>Expiry Date:</Th>
+                  <Th>Repurchase?</Th>
+                  <Th>Actions</Th>
+                </Tr>
+              </Thead>
+              <Tbody>
+                {items.map((item) => (
+                  <>
+                    {editItemID === item.id ? (
+                      <InUseEditable
+                        key={item.id}
+                        editFormData={editFormData}
+                        handleEditFormChange={handleEditFormChange}
+                        cancel={cancel}
+                      />
+                    ) : (
+                      <InUse
+                        key={item.id}
+                        item={item}
+                        toggleRepurchase={() => toggleRepurchase(item.id)}
+                        editItem={editItem}
+                        deleteItem={deleteItem}
+                      />
+                    )}
+                  </>
+                ))}
+              </Tbody>
+            </Table>
+          </form>
+        </TableContainer>
+      </main>
     </div>
   );
 }

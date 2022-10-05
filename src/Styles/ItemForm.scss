@@ -1,10 +1,17 @@
+// grid wrapper
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+// grid container
 .form-container {
   // border: 1px solid white;
-  max-width: 100rem;
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-template-rows: auto;
-  grid-template-areas: "sidebar main main main";
+  // display: grid;
+  max-width: 90rem;
+  // grid-template-columns: 1fr 3fr;
+  // grid-template-rows: auto;
+  // grid-template-areas: "sidebar main main main";
 }
 
 .product-form {
@@ -25,12 +32,12 @@
 }
 
 .side-nav {
-  grid-area: sidebar;
+  // grid-area: sidebar;
 }
 
 .table_container {
   border: 1px solid white;
-  grid-area: main;
+  // grid-area: main;
 }
 
 .table_container td:last-child button {
@@ -49,8 +56,19 @@
   padding: 0.5em;
 }
 
+// small screens min-width of 320px
+@media (min-width: 20em) {
+  .form-container {
+    display: block;
+    min-width: 30rem;
+  }
+}
+
+// device screens of about min-width 640px
 @media (min-width: 40em) {
   .form-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: 0.5fr 3fr;
+    grid-template-rows: auto;
   }
 }

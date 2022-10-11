@@ -199,9 +199,7 @@ export default function ItemForm({
 
         daysRemaining = daysLeftInCurrentMon + expDay;
       }
-      // console.log("days remaining", daysRemaining)
-      console.log("results", result);
-      console.log("expired", expiredItems);
+      
       return daysRemaining < 0
         ? expiredItems.push(item.itemName)
         : daysRemaining <= 30
@@ -209,13 +207,18 @@ export default function ItemForm({
         : null;
     });
 
-    return expiredItems.length === 1 && result.length === 1 ? 
-      `${expiredItems.join(" ")} has expired! ${result.join(" ")} is expiring soon!`
-      : expiredItems.length > 1 && result.length > 1 ?
-      `${expiredItems.join(", ")} have expired! ${result.join(", ")} are expiring soon!` :
-      expiredItems.length === 1 ? `${expiredItems.join(" ")} has expired!` :
-      expiredItems.length > 1 ? 
-      `${expiredItems.join(", ")} have expired!` 
+    return expiredItems.length === 1 && result.length === 1
+      ? `${expiredItems.join(" ")} has expired! ${result.join(
+          " "
+        )} is expiring soon!`
+      : expiredItems.length > 1 && result.length > 1
+      ? `${expiredItems.join(", ")} have expired! ${result.join(
+          ", "
+        )} are expiring soon!`
+      : expiredItems.length === 1
+      ? `${expiredItems.join(" ")} has expired!`
+      : expiredItems.length > 1
+      ? `${expiredItems.join(", ")} have expired!`
       : result.length === 1
       ? `${result.join(" ")} is expiring soon!`
       : result.length > 1

@@ -173,6 +173,7 @@ export default function ItemForm({
     let daysInCurrentMonth = getDaysInMonth(y, m, 0);
 
     let result = [];
+    let expiredItems = [];
 
     items.map((item) => {
       const expDay = Number(
@@ -198,8 +199,13 @@ export default function ItemForm({
 
         daysRemaining = daysLeftInCurrentMon + expDay;
       }
-
-      return daysRemaining <= 30 ? result.push(item.itemName) : null;
+      console.log("days remaining", daysRemaining)
+      console.log("results", result)
+      return daysRemaining < 0
+        ? expiredItems.push(item.itemName)
+        : daysRemaining <= 30
+        ? result.push(item.itemName)
+        : null;
     });
 
     return result.length === 1

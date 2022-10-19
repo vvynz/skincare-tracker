@@ -1,23 +1,41 @@
-import {TableContainer,
+import {
+  TableContainer,
   Table,
   TableCaption,
   Thead,
   Tbody,
   Tr,
-  Th, Td} from "@chakra-ui/react";
+  Th,
+  Td,
+} from "@chakra-ui/react";
 
 export default function SearchResults({ results }) {
   console.log(results);
   return (
-    <div>
-      {results.map((item) => {
-        return (
-          <section>
-            <h2>{item.brand}:</h2>
-            <h4>{item.itemName}</h4>
-          </section>
-        );
-      })}
-    </div>
+    <TableContainer>
+      <Table>
+        <TableCaption>Results</TableCaption>
+        <Thead>
+          <Tr>
+            <Th>Brand:</Th>
+            <Th>Item Name:</Th>
+            <Th>Date Opened:</Th>
+            <Th>Expiry Date:</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          {results.map((item) => {
+            return (
+              <Tr>
+                <Td>{item.brand}</Td>
+                <Td>{item.itemName}</Td>
+                <Td>{item.dateOpened}</Td>
+                <Td>{item.expiryDate}</Td>
+              </Tr>
+            );
+          })}
+        </Tbody>
+      </Table>
+    </TableContainer>
   );
 }

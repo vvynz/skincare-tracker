@@ -11,6 +11,7 @@ import {
 
 export default function SearchResults({ results }) {
   console.log(results);
+  // the search results keeps the prev search items even with a new search. Need to refactor the search function
   if (results.length > 0) {
     return (
       <TableContainer>

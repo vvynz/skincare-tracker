@@ -1,3 +1,4 @@
+import React, {useState} from "react";
 import {
   TableContainer,
   Table,
@@ -11,42 +12,39 @@ import {
 } from "@chakra-ui/react";
 
 export default function SearchResults({ query, filteredResults }) {
+  const [loaded, setLoaded] = useState(false);
   
-  const load = () => {
-    <TableContainer>
-      <Table>
-        <TableCaption>Results</TableCaption>
-        <Thead>
-          <Tr>
-            <Th>Brand:</Th>
-            <Th>Item Name:</Th>
-            <Th>Date Opened:</Th>
-            <Th>Expiry Date:</Th>
-          </Tr>
-        </Thead>
-        <Tbody>
-          {filteredResults.map((item) => {
-            return (
-              <>
-                <Tr id={item.id}>
-                  <Td>{item.brand}</Td>
-                  <Td>{item.itemName}</Td>
-                  <Td>{item.dateOpened}</Td>
-                  <Td>{item.expiryDate}</Td>
-                </Tr>
-              </>
-            );
-          })}
-        </Tbody>
-      </Table>
-    </TableContainer>;
-  };
+  const load = () => {};
 
   if (query) {
     return (
-      <>
-        <Spinner />
-      </>
+      <TableContainer>
+        <Table>
+          <TableCaption>Results</TableCaption>
+          <Thead>
+            <Tr>
+              <Th>Brand:</Th>
+              <Th>Item Name:</Th>
+              <Th>Date Opened:</Th>
+              <Th>Expiry Date:</Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            {filteredResults.map((item) => {
+              return (
+                <>
+                  <Tr id={item.id}>
+                    <Td>{item.brand}</Td>
+                    <Td>{item.itemName}</Td>
+                    <Td>{item.dateOpened}</Td>
+                    <Td>{item.expiryDate}</Td>
+                  </Tr>
+                </>
+              );
+            })}
+          </Tbody>
+        </Table>
+      </TableContainer>
     );
   } else {
     return "HELLO";

@@ -12,17 +12,12 @@ import "../Styles/NavBar.scss";
 export default function NavBar({
   items,
   keyword,
-  setKeyword,
   setResults,
   query,
   setQuery,
 }) {
   const { colorMode, toggleColorMode } = useColorMode();
   const { search } = useAppData();
-
-  const handleKeyword = (e) => {
-    setKeyword(e.target.value);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();

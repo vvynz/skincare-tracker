@@ -42,11 +42,9 @@ function App() {
     brand: "",
     itemName: "",
   });
-  const [keyword, setKeyword] = useState("");
+
   const [results, setResults] = useState([]);
   const [query, setQuery] = useState("");
-  console.log(results);
-  console.log(items);
 
   useEffect(() => {
     localStorage.setItem("items", JSON.stringify(items));
@@ -62,7 +60,6 @@ function App() {
         return item;
     });
   }, [items, query]);
-  console.log(searchResults);
 
   return (
     <div className="App">
@@ -86,8 +83,6 @@ function App() {
         items={items}
         query={query}
         setQuery={setQuery}
-        keyword={keyword}
-        setKeyword={setKeyword}
         setResults={setResults}
       />
       <Tabs

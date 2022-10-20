@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useColorMode } from "@chakra-ui/react";
 import { Button, Heading, Input } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
@@ -6,7 +6,6 @@ import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import logo from "../Assets/logo.png";
 import logo_col from "../Assets/skincare.png";
 
-import useAppData from "../Hooks/useAppData";
 import "../Styles/NavBar.scss";
 
 export default function NavBar({

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import {
   TableContainer,
   Table,
@@ -12,10 +12,7 @@ import {
 } from "@chakra-ui/react";
 
 export default function SearchResults({ query, filteredResults }) {
-  const [loaded, setLoaded] = useState(false);
-  
-  const load = () => {};
-
+ 
   if (query) {
     return (
       <TableContainer>
@@ -47,6 +44,8 @@ export default function SearchResults({ query, filteredResults }) {
       </TableContainer>
     );
   } else {
-    return "HELLO";
+    return (
+          "HELLO"
+    );
   }
 }

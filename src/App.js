@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 
 import NavBar from "./Components/NavBar";
 import ItemForm from "./Components/ItemForm";
@@ -53,14 +53,16 @@ function App() {
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
   }, [items, wishlist]);
 
-  const searchResults = items.filter((item) => {
-    if (
-      item.brand.toLowerCase().includes(query.toLowerCase()) ||
-      item.itemName.toLowerCase().includes(query.toLowerCase())
-    )
-      return item;
-  });
-  console.log(searchResults)
+  const searchResults = useMemo(() => {
+    return items.filter((item) => {
+      if (
+        item.brand.toLowerCase().includes(query.toLowerCase()) ||
+        item.itemName.toLowerCase().includes(query.toLowerCase())
+      )
+        return item;
+    });
+  }, [items, query]);
+  console.log(searchResults);
 
   return (
     <div className="App">
@@ -102,7 +104,7 @@ function App() {
         </TabList>
         <TabPanels>
           <TabPanel>
-            <SearchResults results={results} />
+            <SearchResults results={results} searchResults={searchResults} />
           </TabPanel>
           <TabPanel>
             <ItemForm

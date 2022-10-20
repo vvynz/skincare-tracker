@@ -51,7 +51,7 @@ function App() {
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
   }, [items, wishlist]);
 
-  const searchResults = useMemo(() => {
+  const filteredResults = useMemo(() => {
     return items.filter((item) => {
       if (
         item.brand.toLowerCase().includes(query.toLowerCase()) ||
@@ -60,7 +60,6 @@ function App() {
         return item;
     });
   }, [items, query]);
-  console.log("query =",query)
 
   return (
     <div className="App">
@@ -100,7 +99,7 @@ function App() {
         </TabList>
         <TabPanels>
           <TabPanel>
-            <SearchResults query={query} searchResults={searchResults} />
+            <SearchResults query={query} filteredResults={filteredResults} />
           </TabPanel>
           <TabPanel>
             <ItemForm

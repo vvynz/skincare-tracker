@@ -9,9 +9,7 @@ import {
   Td,
 } from "@chakra-ui/react";
 
-export default function SearchResults({ query, searchResults }) {
-  console.log(searchResults);
-  
+export default function SearchResults({ query, filteredResults }) {
   if (query) {
     return (
       <TableContainer>
@@ -26,7 +24,7 @@ export default function SearchResults({ query, searchResults }) {
             </Tr>
           </Thead>
           <Tbody>
-            {searchResults.map((item) => {
+            {filteredResults.map((item) => {
               return (
                 <Tr id={item.id}>
                   <Td>{item.brand}</Td>

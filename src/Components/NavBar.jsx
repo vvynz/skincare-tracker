@@ -21,7 +21,7 @@ export default function NavBar({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setResults(search(items, keyword));
+    setResults(search(items, query));
     // setKeyword(""); // want to clear the search bar after...
   };
   // console.log(results);

@@ -1,3 +1,11 @@
-Box {
+.stats_container {
+  display: flex;
+  // justify-content: center;
+  justify-content: space-evenly;
+}
+
+.stats_box {
   border: 1px solid white;
+  padding: 1.5em;
+  background-color: rgb(231, 220, 244);
 }

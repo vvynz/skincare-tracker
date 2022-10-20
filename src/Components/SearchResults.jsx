@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+
+import Overview from "./Overview";
+
 import {
   TableContainer,
   Table,
@@ -12,7 +15,6 @@ import {
 } from "@chakra-ui/react";
 
 export default function SearchResults({ query, filteredResults }) {
- 
   if (query) {
     return (
       <TableContainer>
@@ -45,7 +47,7 @@ export default function SearchResults({ query, filteredResults }) {
     );
   } else {
     return (
-          "HELLO"
+      <Overview />
     );
   }
 }

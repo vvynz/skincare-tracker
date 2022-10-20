@@ -60,6 +60,7 @@ function App() {
         return item;
     });
   }, [items, query]);
+  console.log("query =",query)
 
   return (
     <div className="App">
@@ -99,7 +100,7 @@ function App() {
         </TabList>
         <TabPanels>
           <TabPanel>
-            <SearchResults results={results} searchResults={searchResults} />
+            <SearchResults query={query} searchResults={searchResults} />
           </TabPanel>
           <TabPanel>
             <ItemForm

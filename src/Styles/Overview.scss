@@ -9,4 +9,8 @@
   border-radius: 0.75em;
   padding: 1.5em;
   background-color: rgb(231, 220, 244);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

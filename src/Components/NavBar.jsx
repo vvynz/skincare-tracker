@@ -9,7 +9,14 @@ import logo_col from "../Assets/skincare.png";
 import useAppData from "../Hooks/useAppData";
 import "../Styles/NavBar.scss";
 
-export default function NavBar({ items, keyword, setKeyword, setResults, query, setQuery }) {
+export default function NavBar({
+  items,
+  keyword,
+  setKeyword,
+  setResults,
+  query,
+  setQuery,
+}) {
   const { colorMode, toggleColorMode } = useColorMode();
   const { search } = useAppData();
 
@@ -31,10 +38,11 @@ export default function NavBar({ items, keyword, setKeyword, setResults, query, 
       </nav>
       <div>
         <Input
+          value={query}
           className="search_bar"
           width="auto"
           placeholder="Search..."
-          onChange={handleKeyword}
+          onChange={e => setQuery(e.target.value)}
         />
         <Button onClick={handleSubmit}>Search</Button>
         <button className="toggle--colorMode" onClick={toggleColorMode}>

@@ -44,13 +44,23 @@ function App() {
   });
   const [keyword, setKeyword] = useState("");
   const [results, setResults] = useState([]);
-  const [query, setQuery] = ("");
-  console.log(results)
+  const [query, setQuery] = useState("");
+  console.log(results);
+  console.log(items);
 
   useEffect(() => {
     localStorage.setItem("items", JSON.stringify(items));
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
   }, [items, wishlist]);
+
+  const searchResults = items.filter((item) => {
+    if (
+      item.brand.toLowerCase().includes(query.toLowerCase()) ||
+      item.itemName.toLowerCase().includes(query.toLowerCase())
+    )
+      return item;
+  });
+  console.log(searchResults)
 
   return (
     <div className="App">
@@ -70,8 +80,21 @@ function App() {
           },
         }}
       />
-      <NavBar items={items} query={query} setQuery={setQuery} keyword={keyword} setKeyword={setKeyword} setResults={setResults} />
-      <Tabs className="tabs" isFitted variant="enclosed" colorScheme="purple" defaultIndex={0}>
+      <NavBar
+        items={items}
+        query={query}
+        setQuery={setQuery}
+        keyword={keyword}
+        setKeyword={setKeyword}
+        setResults={setResults}
+      />
+      <Tabs
+        className="tabs"
+        isFitted
+        variant="enclosed"
+        colorScheme="purple"
+        defaultIndex={0}
+      >
         <TabList>
           <Tab>Dashboard</Tab>
           <Tab>Currently In Use</Tab>

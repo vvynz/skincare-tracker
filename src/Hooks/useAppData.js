@@ -1,6 +1,4 @@
 import React from "react";
-import { nanoid } from "nanoid";
-import { useDisclosure } from "@chakra-ui/react";
 
 export default function useAppData() {
   const appData = {};
@@ -21,13 +19,12 @@ export default function useAppData() {
   appData.getDaysInMonth = getDaysInMonth;
 
   const search = (state, term) => {
-    term = term.toLowerCase();
     let output = [];
 
     for (let i of state) {
       if (
-        i.brand.toLowerCase().includes(term) ||
-        i.itemName.toLowerCase().includes(term)
+        i.brand.toLowerCase().includes(term.toLowerCase()) ||
+        i.itemName.toLowerCase().includes(term.toLowerCase())
       ) {
         output.push(i);
       }

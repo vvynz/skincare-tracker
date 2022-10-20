@@ -44,6 +44,7 @@ function App() {
   });
   const [keyword, setKeyword] = useState("");
   const [results, setResults] = useState([]);
+  const [query, setQuery] = ("");
   console.log(results)
 
   useEffect(() => {
@@ -69,7 +70,7 @@ function App() {
           },
         }}
       />
-      <NavBar items={items} keyword={keyword} setKeyword={setKeyword} setResults={setResults} />
+      <NavBar items={items} query={query} setQuery={setQuery} keyword={keyword} setKeyword={setKeyword} setResults={setResults} />
       <Tabs className="tabs" isFitted variant="enclosed" colorScheme="purple" defaultIndex={0}>
         <TabList>
           <Tab>Dashboard</Tab>

@@ -9,7 +9,7 @@ import logo_col from "../Assets/skincare.png";
 import useAppData from "../Hooks/useAppData";
 import "../Styles/NavBar.scss";
 
-export default function NavBar({ items, keyword, setKeyword, setResults }) {
+export default function NavBar({ items, keyword, setKeyword, setResults, query, setQuery }) {
   const { colorMode, toggleColorMode } = useColorMode();
   const { search } = useAppData();
 

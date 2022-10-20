@@ -1,5 +1,14 @@
-import React from "react"
+import React from "react";
+
+import { Box } from "@chakra-ui/react";
+
+import "../Styles/Overview.scss"
 
 export default function Overview() {
-  return("🫶🏻💜")
+  return (
+    <main>
+      <Box className="" />
+      <Box />
+    </main>
+  );
 }

@@ -11,7 +11,6 @@ import "../Styles/NavBar.scss";
 
 export default function NavBar({
   items,
-  keyword,
   setResults,
   query,
   setQuery,
@@ -22,9 +21,8 @@ export default function NavBar({
   const handleSubmit = (e) => {
     e.preventDefault();
     setResults(search(items, query));
-    // setKeyword(""); // want to clear the search bar after...
   };
-  // console.log(results);
+ 
   return (
     <header>
       <nav className="navbar">

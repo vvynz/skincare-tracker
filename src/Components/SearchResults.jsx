@@ -11,10 +11,9 @@ import {
   Tr,
   Th,
   Td,
-  Spinner,
 } from "@chakra-ui/react";
 
-export default function SearchResults({ query, filteredResults }) {
+export default function SearchResults({ query, filteredResults, items, wishlist }) {
   if (query) {
     return (
       <TableContainer>
@@ -47,7 +46,7 @@ export default function SearchResults({ query, filteredResults }) {
     );
   } else {
     return (
-      <Overview />
+      <Overview items={items} wishlist={wishlist} />
     );
   }
 }

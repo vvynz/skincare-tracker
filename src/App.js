@@ -99,7 +99,7 @@ function App() {
         </TabList>
         <TabPanels>
           <TabPanel>
-            <SearchResults query={query} filteredResults={filteredResults} />
+            <SearchResults query={query} filteredResults={filteredResults} items={items} wishlist={wishlist} />
           </TabPanel>
           <TabPanel>
             <ItemForm

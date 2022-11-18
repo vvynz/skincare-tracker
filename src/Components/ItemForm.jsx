@@ -195,38 +195,36 @@ export default function ItemForm({
       if (y === year && m === month) {
         //calculate the num of items expiring this month
         daysRemaining = expDay - d;
-      } else if (y === year && m < month) {
+      }
+
+      if (y === year && m < month) {
         // calculate the num of items expiring if their expiry date is within the next month
 
         daysRemaining = daysLeftInCurrentMon + expDay;
-        // console.log("days left in curr month=",daysLeftInCurrentMon);
-        
-      } else if (y === year && m > month) {
+      }
+
+      if (y === year && m > month) {
         // calculate the num of items that have expired in the past month
         let daysInPrevMonth = getDaysInMonth(y, month, 0);
-        daysExpired = (Math.abs(daysInPrevMonth)*-1) + expDay - d;
-
-        console.log("days in prev mon", daysInPrevMonth);
-
-        // console.log("today", d);
-        console.log("expDate",expDay);
-        // console.log("exp Month", month);
-        console.log("days in current Mon", daysInCurrentMonth);
-        console.log("days expired=", daysExpired);
-        console.log("days left in this mon", daysLeftInCurrentMon);
+        daysExpired = Math.abs(daysInPrevMonth) * -1 + expDay - d;
       }
-      
-      
-      return daysRemaining < 0
+
+      return daysExpired < 0
         ? expiredItems.push(item.itemName)
         : daysRemaining <= 30
         ? result.push(item.itemName)
         : null;
     });
+    // console.log("results arr =", result);
+    // console.log("expItems arr", expiredItems);
 
     return expiredItems.length === 1 && result.length === 1
       ? `${expiredItems.join(" ")} has expired! ${result.join(
           " "
+        )} is expiring soon!`
+      : expiredItems.length > 1 && result.length === 1
+      ? `${expiredItems.join(", ")} have expired! ${result.join(
+          ", "
         )} is expiring soon!`
       : expiredItems.length > 1 && result.length > 1
       ? `${expiredItems.join(", ")} have expired! ${result.join(

@@ -190,6 +190,7 @@ export default function ItemForm({
       // if the current month matches the item's expiry month
       let daysRemaining;
       let daysLeftInCurrentMon = daysInCurrentMonth - d;
+      let daysExpired;
 
       if (y === year && m === month) {
         //calculate the num of items expiring this month
@@ -201,17 +202,17 @@ export default function ItemForm({
         // console.log("days left in curr month=",daysLeftInCurrentMon);
         
       } else if (y === year && m > month) {
-        // calculate the num of items that have expired
+        // calculate the num of items that have expired in the past month
         let daysInPrevMonth = getDaysInMonth(y, month, 0);
-        daysRemaining = daysInPrevMonth - expDay;
+        daysExpired = (Math.abs(daysInPrevMonth)*-1) + expDay - d;
 
         console.log("days in prev mon", daysInPrevMonth);
 
-        console.log("today", d);
+        // console.log("today", d);
         console.log("expDate",expDay);
-        console.log("exp Month", month);
+        // console.log("exp Month", month);
         console.log("days in current Mon", daysInCurrentMonth);
-        console.log("days remaining=", daysRemaining);
+        console.log("days expired=", daysExpired);
         console.log("days left in this mon", daysLeftInCurrentMon);
       }
       

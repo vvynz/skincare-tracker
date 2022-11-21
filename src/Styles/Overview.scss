@@ -1,16 +1,26 @@
 .stats_container {
   display: flex;
-  // justify-content: center;
-  justify-content: space-evenly;
+  flex-direction: column;
+  // justify-content: space-evenly;
+  margin-top: 3em;
 }
 
 .stats_box {
   border: 1px solid white;
   border-radius: 0.75em;
   padding: 1.5em;
+  margin: auto;
+  margin-bottom: 2rem;
   background-color: rgb(231, 220, 244);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+@media (min-width: 30em) {
+  .stats_container {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
 }

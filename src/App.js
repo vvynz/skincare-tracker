@@ -56,8 +56,9 @@ function App() {
       if (
         item.brand.toLowerCase().includes(query.toLowerCase()) ||
         item.itemName.toLowerCase().includes(query.toLowerCase())
-      )
-        return item;
+      ) {
+        return item
+      }
     });
   }, [items, query]);
 

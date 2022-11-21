@@ -124,8 +124,8 @@ export default function WishlistForm({
   };
 
   return (
-    <section className="wishlist-container">
-      <nav className="side-nav">
+    <section className="wishlist_container">
+      <nav className="side_nav">
         <Button colorScheme="purple" onClick={onOpen}>
           Add Item
         </Button>
@@ -188,7 +188,7 @@ export default function WishlistForm({
         </Modal>
       </nav>
 
-      <TableContainer className="table_container">
+      <TableContainer className="wishlist_table_container">
         <form onSubmit={handleWishlistEditFormSubmit}>
           <Table>
             <TableCaption>Wishlist</TableCaption>

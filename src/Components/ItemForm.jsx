@@ -245,8 +245,8 @@ export default function ItemForm({
 
   return (
     <div className="wrapper">
-      <main className="form-container">
-        <nav className="side-nav">
+      <main className="form_container">
+        <nav className="side_nav">
           <Button
             className="add_item_btn"
             colorScheme="purple"
@@ -266,10 +266,10 @@ export default function ItemForm({
               <ModalCloseButton />
               <ModalBody>
                 <form onSubmit={handleSubmit}>
-                  <FormControl className="product-form">
+                  <FormControl className="product_form">
                     <FormLabel>Brand:</FormLabel>
                     <Input
-                      className="input-field"
+                      className="input_field"
                       value={formData.brand}
                       onChange={setFormChange}
                       placeholder="Brand"
@@ -278,7 +278,7 @@ export default function ItemForm({
 
                     <FormLabel>Item:</FormLabel>
                     <Input
-                      className="input-field"
+                      className="input_field"
                       value={formData.itemName}
                       required="required"
                       onChange={setFormChange}
@@ -288,7 +288,7 @@ export default function ItemForm({
 
                     <FormLabel>Date opened:</FormLabel>
                     <Input
-                      className="input-field"
+                      className="input_field"
                       value={formData.dateOpened.toLocaleDateString}
                       required="required"
                       onInput={setFormChange}
@@ -298,7 +298,7 @@ export default function ItemForm({
 
                     <FormLabel>Expiry date:</FormLabel>
                     <Input
-                      className="input-field"
+                      className="input_field"
                       value={formData.expiryDate.toLocaleDateString}
                       required="required"
                       onInput={setFormChange}

@@ -50,6 +50,7 @@ function App() {
   }, [items, wishlist]);
 
   const filteredResults = useMemo(() => {
+    // eslint-disable-next-line
     return items.filter((item) => {
       if (
         item.brand.toLowerCase().includes(query.toLowerCase()) ||

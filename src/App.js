@@ -42,8 +42,6 @@ function App() {
     brand: "",
     itemName: "",
   });
-
-  const [results, setResults] = useState([]);
   const [query, setQuery] = useState("");
 
   useEffect(() => {
@@ -56,9 +54,8 @@ function App() {
       if (
         item.brand.toLowerCase().includes(query.toLowerCase()) ||
         item.itemName.toLowerCase().includes(query.toLowerCase())
-      ) {
-        return item
-      }
+      )
+        return item;
     });
   }, [items, query]);
 
@@ -84,7 +81,6 @@ function App() {
         items={items}
         query={query}
         setQuery={setQuery}
-        setResults={setResults}
       />
       <Tabs
         className="tabs"

@@ -77,11 +77,7 @@ function App() {
           },
         }}
       />
-      <NavBar
-        items={items}
-        query={query}
-        setQuery={setQuery}
-      />
+      <NavBar items={items} query={query} setQuery={setQuery} />
       <Tabs
         className="tabs"
         isFitted
@@ -96,7 +92,12 @@ function App() {
         </TabList>
         <TabPanels>
           <TabPanel>
-            <SearchResults query={query} filteredResults={filteredResults} items={items} wishlist={wishlist} />
+            <SearchResults
+              query={query}
+              filteredResults={filteredResults}
+              items={items}
+              wishlist={wishlist}
+            />
           </TabPanel>
           <TabPanel>
             <ItemForm

@@ -17,13 +17,13 @@ export default function NavBar({
     <header>
       <nav className="navbar">
         <img className="logo" src={logo_col} alt="Logo icon" />
-        <Heading>skincare tracker.</Heading>
+        <Heading className="heading-name">skincare tracker.</Heading>
       </nav>
-      <div>
+      <div className="search-container">
         <Input
           value={query}
-          className="search_bar"
-          width="auto"
+          className="search-bar"
+          // width="auto"
           placeholder="Search..."
           onChange={e => setQuery(e.target.value)}
         />

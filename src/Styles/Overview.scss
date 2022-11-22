@@ -18,10 +18,9 @@
   align-items: center;
 }
 
-// screen min-width: 400px
-@media (min-width: 25em) {
+// screen min-width: 560px
+@media (min-width: 35em) {
   .stats_container {
     flex-direction: row;
-    // justify-content: space-evenly;
   }
 }

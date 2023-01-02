@@ -256,7 +256,7 @@ export default function ItemForm({
             Add Item
           </Button>
           <Button onClick={notify} colorScheme="purple" size="sm">
-            Notifications
+            Expiration
           </Button>
 
           <Modal isOpen={isOpen} onClose={onClose}>

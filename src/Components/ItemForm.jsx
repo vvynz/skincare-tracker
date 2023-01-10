@@ -39,7 +39,7 @@ export default function ItemForm({
   editItemID,
   setEditItemID,
 }) {
-  const { generateDate, getDaysInMonth, expiredItems } = useAppData();
+  const { expiringItems } = useAppData();
 
   const handleSubmit = (e) => {
     //this will reset the form...
@@ -165,10 +165,10 @@ export default function ItemForm({
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const notify = () => toast.error(expiringItems());
+  const notify = () => toast.error(expiringItems(items));
 
   useEffect(() => {
-    toast.error(expiringItems());
+    toast.error(expiringItems(items));
   }, [items]);
 
   return (

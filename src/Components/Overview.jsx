@@ -8,7 +8,6 @@ import inUse from "../Assets/inuse.png";
 import wishlistIcon from "../Assets/wishlist.png";
 
 export default function Overview({ items, wishlist }) {
-  console.log(items)
   return (
     <main className="stats_container">
       <Box w="15rem" h="10rem" className="stats_box">

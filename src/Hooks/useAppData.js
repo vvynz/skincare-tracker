@@ -31,7 +31,7 @@ export default function useAppData() {
   };
   appData.search = search;
 
-  const expiringItems = () => {
+  const expiringItems = (state) => {
     const today = generateDate();
     const d = Number(today.substring(today.length - 2));
     const m = Number(today.substring(today.length - 5, today.length - 3));
@@ -41,7 +41,7 @@ export default function useAppData() {
     let result = [];
     let expiredItems = [];
 
-    items.map((item) => {
+    state.map((item) => {
       const expDay = Number(
         item.expiryDate.substring(item.expiryDate.length - 2)
       );
@@ -110,7 +110,7 @@ export default function useAppData() {
       ? `${result.join(", ")} are expiring soon!`
       : "No notifications at this time";
   };
-  appData.expiredItems = expiringItems;
+  appData.expiringItems = expiringItems;
 
   return appData;
 }

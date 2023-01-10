@@ -31,5 +31,86 @@ export default function useAppData() {
   };
   appData.search = search;
 
+  const expiringItems = () => {
+    const today = generateDate();
+    const d = Number(today.substring(today.length - 2));
+    const m = Number(today.substring(today.length - 5, today.length - 3));
+    const y = Number(today.substring(0, 4));
+    let daysInCurrentMonth = getDaysInMonth(y, m, 0);
+
+    let result = [];
+    let expiredItems = [];
+
+    items.map((item) => {
+      const expDay = Number(
+        item.expiryDate.substring(item.expiryDate.length - 2)
+      );
+      const month = Number(
+        item.expiryDate.substring(
+          item.expiryDate.length - 5,
+          item.expiryDate.length - 3
+        )
+      );
+      const year = Number(item.expiryDate.substring(0, 4));
+
+      // if the current month matches the item's expiry month
+      let daysRemaining;
+      let daysLeftInCurrentMon = daysInCurrentMonth - d;
+      let daysExpired;
+
+      if (y === year && m === month) {
+        //calculate the num of items expiring this month
+        daysRemaining = expDay - d;
+      }
+
+      if (y === year && m < month) {
+        // calculate the num of items expiring if their expiry date is within the next month
+
+        daysRemaining = daysLeftInCurrentMon + expDay;
+      }
+
+      if (y === year && m > month) {
+        // calculate the num of items that have expired in the past month
+        let daysInPrevMonth = getDaysInMonth(y, month, 0);
+        daysExpired = Math.abs(daysInPrevMonth) * -1 + expDay - d;
+      }
+      // console.log("days expired", daysExpired)
+      // console.log("d remaining", daysRemaining)
+
+      return daysExpired < 0
+        ? expiredItems.push(item.itemName)
+        : daysRemaining < 0 
+        ? expiredItems.push(item.itemName) 
+        : daysRemaining <= 30 && daysRemaining > 0
+        ? result.push(item.itemName)
+        : null;
+    });
+    // console.log("results arr =", result);
+    // console.log("expItems arr", expiredItems);
+
+    return expiredItems.length === 1 && result.length === 1
+      ? `${expiredItems.join(" ")} has expired! ${result.join(
+          " "
+        )} is expiring soon!`
+      : expiredItems.length > 1 && result.length === 1
+      ? `${expiredItems.join(", ")} have expired! ${result.join(
+          ", "
+        )} is expiring soon!`
+      : expiredItems.length > 1 && result.length > 1
+      ? `${expiredItems.join(", ")} have expired! ${result.join(
+          ", "
+        )} are expiring soon!`
+      : expiredItems.length === 1
+      ? `${expiredItems.join(" ")} has expired!`
+      : expiredItems.length > 1
+      ? `${expiredItems.join(", ")} have expired!`
+      : result.length === 1
+      ? `${result.join(" ")} is expiring soon!`
+      : result.length > 1
+      ? `${result.join(", ")} are expiring soon!`
+      : "No notifications at this time";
+  };
+  appData.expiredItems = expiringItems;
+
   return appData;
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useMemo } from "react";
 import { nanoid } from "nanoid";
 import toast from "react-hot-toast";
 
@@ -215,8 +215,8 @@ export default function ItemForm({
         ? result.push(item.itemName)
         : null;
     });
-    // console.log("results arr =", result);
-    // console.log("expItems arr", expiredItems);
+    console.log("results arr =", result);
+    console.log("expItems arr", expiredItems);
 
     return expiredItems.length === 1 && result.length === 1
       ? `${expiredItems.join(" ")} has expired! ${result.join(
@@ -242,6 +242,10 @@ export default function ItemForm({
   };
 
   const notify = () => toast.error(expiringItems());
+
+  useEffect(() => {
+    toast.error(expiringItems());
+  }, [items]);
 
   return (
     <div className="wrapper">

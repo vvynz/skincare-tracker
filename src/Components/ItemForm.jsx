@@ -208,15 +208,19 @@ export default function ItemForm({
         let daysInPrevMonth = getDaysInMonth(y, month, 0);
         daysExpired = Math.abs(daysInPrevMonth) * -1 + expDay - d;
       }
+      // console.log("days expired", daysExpired)
+      // console.log("d remaining", daysRemaining)
 
       return daysExpired < 0
         ? expiredItems.push(item.itemName)
-        : daysRemaining <= 30
+        : daysRemaining < 0 
+        ? expiredItems.push(item.itemName) 
+        : daysRemaining <= 30 && daysRemaining > 0
         ? result.push(item.itemName)
         : null;
     });
-    console.log("results arr =", result);
-    console.log("expItems arr", expiredItems);
+    // console.log("results arr =", result);
+    // console.log("expItems arr", expiredItems);
 
     return expiredItems.length === 1 && result.length === 1
       ? `${expiredItems.join(" ")} has expired! ${result.join(
